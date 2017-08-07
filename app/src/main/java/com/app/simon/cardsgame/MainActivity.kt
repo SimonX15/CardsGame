@@ -1,15 +1,17 @@
 package com.app.simon.cardsgame
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.design.widget.Snackbar
 import android.support.v4.view.GravityCompat
-import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.view.Menu
 import android.view.MenuItem
 import com.app.simon.base.BaseActivity
 import com.app.simon.base.callback.IViewCallBack
+import com.app.simon.base.util.LogUtil
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
@@ -24,9 +26,8 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     override fun onBackPressed() {
-        val drawer = findViewById(R.id.drawer_layout) as DrawerLayout
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START)
+        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
+            drawer_layout.closeDrawer(GravityCompat.START)
         } else {
             super.onBackPressed()
         }
@@ -46,6 +47,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
 
         if (id == R.id.action_settings) {
+            LogUtil.i(TAG, "action_settings")
             return true
         }
 
@@ -58,21 +60,20 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
         if (id == R.id.nav_camera) {
             // Handle the camera action
-
+            LogUtil.i(TAG, "nav_camera")
         } else if (id == R.id.nav_gallery) {
-
+            LogUtil.i(TAG, "nav_gallery")
         } else if (id == R.id.nav_slideshow) {
-
+            LogUtil.i(TAG, "nav_slideshow")
         } else if (id == R.id.nav_manage) {
-
+            LogUtil.i(TAG, "nav_manage")
         } else if (id == R.id.nav_share) {
-
+            LogUtil.i(TAG, "nav_share")
         } else if (id == R.id.nav_send) {
-
+            LogUtil.i(TAG, "nav_send")
         }
 
-        val drawer = findViewById(R.id.drawer_layout) as DrawerLayout
-        drawer.closeDrawer(GravityCompat.START)
+        drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
 
@@ -99,5 +100,14 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     override fun refreshViews() {
 
+    }
+
+    companion object {
+        private val TAG = MainActivity::class.java.simpleName
+
+        fun launch(activity: Activity) {
+            val intent = Intent(activity, MainActivity::class.java)
+            activity.startActivity(intent)
+        }
     }
 }
