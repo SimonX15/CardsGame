@@ -12,11 +12,17 @@ import android.view.MenuItem
 import com.app.simon.base.BaseActivity
 import com.app.simon.base.callback.IViewCallBack
 import com.app.simon.base.util.LogUtil
+import com.app.simon.cardsgame.adapter.CardTypeRecyclerViewAdapter
+import com.app.simon.cardsgame.models.CardType
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.content_main.*
+import java.util.*
 
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener, IViewCallBack {
 
+    private var cardTypeList: MutableList<CardType>? = null
+    private var adapter: CardTypeRecyclerViewAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -81,7 +87,12 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
 
     override fun initData() {
-
+        cardTypeList = ArrayList<CardType>()
+        for (i in 0..9) {
+            val cardType = CardType()
+            cardType.typeName = "name " + i
+            cardTypeList!!.add(cardType)
+        }
     }
 
     override fun assignViews() {
@@ -98,6 +109,11 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener(this)
+
+        //adapter
+        adapter = CardTypeRecyclerViewAdapter(this)
+        recycle_view.adapter = adapter
+        adapter!!.addItems(cardTypeList)
     }
 
     override fun refreshViews() {
