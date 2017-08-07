@@ -22,7 +22,9 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        initData()
         assignViews()
+        refreshViews()
     }
 
     override fun onBackPressed() {
