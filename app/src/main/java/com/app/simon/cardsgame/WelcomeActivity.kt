@@ -1,9 +1,9 @@
 package com.app.simon.cardsgame
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.app.simon.base.BaseActivity
 
-class WelcomeActivity : AppCompatActivity() {
+class WelcomeActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
