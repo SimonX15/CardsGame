@@ -8,12 +8,15 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.app.simon.base.widgets.RoundImageView;
 import com.app.simon.cardsgame.R;
+import com.app.simon.cardsgame.data.Constant;
 import com.app.simon.cardsgame.models.Card;
 import com.app.simon.cardsgame.util.AnimatorUtil;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * desc：卡片类型适配器
@@ -83,15 +86,12 @@ public class CardTypeRecyclerViewAdapter extends RecyclerView.Adapter<CardTypeRe
         private View itemView;
         private FrameLayout frame_card_back;
         private FrameLayout frame_card_front;
+        private RoundImageView img_card_back;
+        private RoundImageView img_card_front;
         private TextView text_card_front_content;
         private TextView text_card_back_content;
 
-        /** 右出动画 */
-//        private AnimatorSet mRightOutSet;
-        /** 左入动画 */
-//        private AnimatorSet mLeftInSet;
-
-        /** 是否显示背面 */
+        /** 是否正在显示背面 */
         private boolean isBackShowing = false;
 
         public ViewHolder(View itemView) {
@@ -99,28 +99,55 @@ public class CardTypeRecyclerViewAdapter extends RecyclerView.Adapter<CardTypeRe
             this.itemView = itemView;
             this.frame_card_back = (FrameLayout) itemView.findViewById(R.id.frame_card_back);
             this.frame_card_front = (FrameLayout) itemView.findViewById(R.id.frame_card_front);
+            this.img_card_back = (RoundImageView) itemView.findViewById(R.id.img_card_back);
+            this.img_card_front = (RoundImageView) itemView.findViewById(R.id.img_card_front);
             this.text_card_front_content = (TextView) itemView.findViewById(R.id.text_card_front_content);
             this.text_card_back_content = (TextView) itemView.findViewById(R.id.text_card_back_content);
-            // 设置动画
-            setAnimators(itemView);
             // 设置镜头距离
             setCameraDistance(frame_card_front, frame_card_back);
         }
 
-        private void bindViews(final Card cardType, int position) {
-            text_card_front_content.setText(cardType.getTypeName());
-            text_card_back_content.setText(cardType.getTypeName() + "F");
+        private void bindViews(final Card card, int position) {
+            if (card == null) {
+                return;
+            }
+            String type = card.getType();
+            if (type != null) {
+                if (type.equals(Constant.INSTANCE.getCARD_TYPE_FIRE())) {
+                    img_card_back.setImageResource(R.mipmap.ic_type_fire);
+                    img_card_front.setImageResource(R.mipmap.ic_type_default_front);
+                } else if (type.equals(Constant.INSTANCE.getCARD_TYPE_SHIELD())) {
+                    img_card_back.setImageResource(R.mipmap.ic_type_shield);
+                    img_card_front.setImageResource(R.mipmap.ic_type_default_front);
+                } else if (type.equals(Constant.INSTANCE.getCARD_TYPE_EAGLE())) {
+                    img_card_back.setImageResource(R.mipmap.ic_type_eagle);
+                    img_card_front.setImageResource(R.mipmap.ic_type_default_front);
+                } else if (type.equals(Constant.INSTANCE.getCARD_TYPE_ICE())) {
+                    img_card_back.setImageResource(R.mipmap.ic_type_ice);
+                    img_card_front.setImageResource(R.mipmap.ic_type_default_front);
+                } else if (type.equals(Constant.INSTANCE.getCARD_TYPE_RAINBOW())) {
+                    img_card_back.setImageResource(R.mipmap.ic_type_rainbow);
+                    img_card_front.setImageResource(R.mipmap.ic_type_default_front);
+                } else if (type.equals(Constant.INSTANCE.getCARD_TYPE_CLOUD())) {
+                    img_card_back.setImageResource(R.mipmap.ic_type_cloud);
+                    img_card_front.setImageResource(R.mipmap.ic_type_default_front);
+                } else if (type.equals(Constant.INSTANCE.getCARD_TYPE_GEM())) {
+                    img_card_back.setImageResource(R.mipmap.ic_type_gem);
+                    img_card_front.setImageResource(R.mipmap.ic_type_default_front);
+                } else {
+                    img_card_back.setImageResource(R.mipmap.ic_type_default);
+                    img_card_front.setImageResource(R.mipmap.ic_type_default_front);
+                }
+            }
+            text_card_back_content.setText(card.getContent());
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    /*if (onCardTypeItemClickListener != null) {
-                        onCardTypeItemClickListener.onItemClick();
-                    }*/
                     frame_card_back.setVisibility(View.VISIBLE);
                     frame_card_front.setVisibility(View.VISIBLE);
                     flipCard(frame_card_front, frame_card_back);
-                    cardType.setBack(true);
+                    card.setBack(true);
                 }
             });
         }
@@ -142,11 +169,6 @@ public class CardTypeRecyclerViewAdapter extends RecyclerView.Adapter<CardTypeRe
                         itemView.setClickable(false);
                     }
                 });
-//                mLeftInSet.setTarget(backView);
-//                mLeftInSet.start();
-
-//                mRightOutSet.setTarget(frontView);
-//                mRightOutSet.start();
 
                 isBackShowing = true;
             } else {
@@ -159,36 +181,8 @@ public class CardTypeRecyclerViewAdapter extends RecyclerView.Adapter<CardTypeRe
                     }
                 });
 
-//                mLeftInSet.setTarget(frontView);
-//                mLeftInSet.start();
-
-//                mRightOutSet.setTarget(backView);
-//                mRightOutSet.start();
-
                 isBackShowing = false;
             }
-        }
-
-        // 设置动画
-        private void setAnimators(final View view) {
-//            mLeftInSet = (AnimatorSet) AnimatorInflater.loadAnimator(context, R.animator.anim_in);
-//            mRightOutSet = (AnimatorSet) AnimatorInflater.loadAnimator(context, R.animator.anim_out);
-
-            // 设置点击事件
-            /*mLeftInSet.addListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    super.onAnimationEnd(animation);
-                    //                  itemView.setClickable(true);
-                }
-            });
-            mRightOutSet.addListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationStart(Animator animation) {
-                    super.onAnimationStart(animation);
-                    view.setClickable(false);
-                }
-            });*/
         }
 
         // 改变视角距离, 贴近屏幕

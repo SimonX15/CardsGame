@@ -7,12 +7,13 @@ package com.app.simon.cardsgame.models
  * @author xw
  */
 class Card {
+
     /**
-     * typeName : 性格
+     * type : 性格
      * content : 问题具体内容
      * isBack : false
      */
-    var typeName: String? = null
+    var type: String? = null
     var content: String? = null
     var isBack: Boolean = false
 }

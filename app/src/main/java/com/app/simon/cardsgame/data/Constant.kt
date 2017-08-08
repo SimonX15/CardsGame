@@ -8,17 +8,53 @@ package com.app.simon.cardsgame.data
  */
 object Constant {
 
+    val CARD_TYPE_DEFAULT = "CARD_TYPE_DEFAULT"
+    val CARD_TYPE_FIRE = "CARD_TYPE_FIRE"
+    val CARD_TYPE_SHIELD = "CARD_TYPE_SHIELD"
+    val CARD_TYPE_EAGLE = "CARD_TYPE_EAGLE"
+    val CARD_TYPE_ICE = "CARD_TYPE_ICE"
+    val CARD_TYPE_RAINBOW = "CARD_TYPE_RAINBOW"
+    val CARD_TYPE_CLOUD = "CARD_TYPE_CLOUD"
+    val CARD_TYPE_GEM = "CARD_TYPE_GEM"
+    val CARD_TYPE_SOIL = "CARD_TYPE_SOIL"
+
+    /** 卡片类型 */
+    val CARD_TYPE = arrayOf(CARD_TYPE_DEFAULT, CARD_TYPE_FIRE, CARD_TYPE_SHIELD, CARD_TYPE_EAGLE, CARD_TYPE_ICE,
+            CARD_TYPE_RAINBOW, CARD_TYPE_CLOUD, CARD_TYPE_GEM, CARD_TYPE_SOIL)
+
     /** 角色  */
-    val KEY_ROLE = arrayOf("自己", "挚友", "战友", "师傅")
+    val KEY_ROLE = arrayOf("自己", "挚友", "战友", "亲人", "师傅", "爱人")
     /** 主题  */
     val KEY_THEME = arrayOf("性格", "情绪", "关系", "信仰")
 
 
     /** 主题  */
-    val VALUE_RECORD = arrayOf(
+    val VALUE_FRIEND_RECORD = arrayOf(
+            "家庭组成是怎样的？关系怎么样呢？",
+            "喜欢什么运动？",
+            "喜欢什么颜色？",
+            "喜欢什么类型的衣服？",
+            "喜欢收到什么类型的礼物？",
+            "喜欢什么花？",
+            "喜欢吃什么水果？",
+            "喜欢吃什么零食？",
+            "喜欢什么类型的音乐？",
+            "看不惯男生的哪些言行举止？",
+            "看不惯女生的哪些言行举止？",
+            "爱的语言？",
+            "容易被激励到的方式？",
             "伤心难过时别人怎样做让你觉得被爱？",
+            "关系里最看重的是什么？",
+            "关系里最害怕的是什么？",
             "面对冲突和压力你的反应通常是什么？",
             "你的情绪按钮是什么？",
+            "最欣赏自己的部分有哪些？",
+            "做X后改变比较大的有哪些？",
+            "清晰自己需要成长的部分有哪些？",
+            "对自己属灵程度的评价是怎样的？",
+            "目前有没有那些部分是很困惑你的？",
+            "圣经里特别喜欢的人物？",
+            "你欣赏的异性的特质有哪些？",
             "你心目中最美好的场景是怎样的或者你一直想做的事情？")
 
     /** 主题类的问题  */

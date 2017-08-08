@@ -7,23 +7,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.app.simon.cardsgame.widgets.RoundImageView
-        android:layout_width="150dp"
-        android:layout_height="225dp"
-        android:layout_gravity="center"
+    <com.app.simon.base.widgets.RoundImageView
+        android:id="@+id/img_card_front"
+        style="@style/Card"
         android:contentDescription="@null"
-        android:src="@mipmap/img_front"
+        android:src="@mipmap/ic_type_default_front"
         app:borderRadius="10dp"
         app:type="round"/>
 
     <TextView
         android:id="@+id/text_card_front_content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:textColor="@android:color/white"
-        android:textSize="40sp"
-        tools:text="正面"/>
+        style="@style/Card.Text.Front"
+        tools:text="正面正面正面正面正面正面正面正面正面正面正"/>
 
 </FrameLayout>

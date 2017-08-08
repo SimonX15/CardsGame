@@ -12,7 +12,9 @@ import android.view.MenuItem
 import com.app.simon.base.BaseActivity
 import com.app.simon.base.callback.IViewCallBack
 import com.app.simon.base.util.LogUtil
+import com.app.simon.base.util.MathUtil
 import com.app.simon.cardsgame.adapter.CardTypeRecyclerViewAdapter
+import com.app.simon.cardsgame.data.Constant
 import com.app.simon.cardsgame.models.Card
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -88,12 +90,16 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     override fun initData() {
         cardTypeList = ArrayList<Card>()
-        for (i in 0..9) {
-            val cardType = Card()
-            cardType.typeName = "name " + i
-            cardTypeList!!.add(cardType)
+
+        for (value in Constant.VALUE_THEME) {
+            val card = Card()
+            card.type = Constant.CARD_TYPE[MathUtil.getRandomNum(0, Constant.CARD_TYPE.size)]
+            card.content = value
+            cardTypeList!!.add(card)
         }
+
     }
+
 
     override fun assignViews() {
         setSupportActionBar(toolbar)
