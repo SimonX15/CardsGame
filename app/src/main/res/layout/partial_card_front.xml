@@ -3,9 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/fragment_fl_card_back"
+    android:id="@+id/frame_card_front"
     android:layout_width="match_parent"
-
     android:layout_height="match_parent">
 
     <com.app.simon.cardsgame.widgets.RoundImageView
@@ -13,18 +12,18 @@
         android:layout_height="225dp"
         android:layout_gravity="center"
         android:contentDescription="@null"
-        android:src="@mipmap/img_back"
+        android:src="@mipmap/img_front"
         app:borderRadius="10dp"
         app:type="round"/>
 
     <TextView
-        android:id="@+id/card_back_tv_content"
+        android:id="@+id/text_card_front_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:gravity="center"
         android:textColor="@android:color/white"
         android:textSize="40sp"
-        tools:text="背面"/>
+        tools:text="正面"/>
 
 </FrameLayout>
