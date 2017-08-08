@@ -113,16 +113,18 @@ public class CardTypeRecyclerViewAdapter extends RecyclerView.Adapter<CardTypeRe
                 return;
             }
 
-            if (card.isFront()) {
+            // FIXME: 2017/8/8 by xw TODO: 产生bug的原因是alpha
+
+            /*if (card.isFront()) {
                 frame_card_front.setVisibility(View.VISIBLE);
                 frame_card_back.setVisibility(View.INVISIBLE);
             } else {
                 frame_card_front.setVisibility(View.INVISIBLE);
                 frame_card_back.setVisibility(View.VISIBLE);
-            }
+            }*/
 
-            Log.i(TAG, "bindViews: position=" + position + "; frame_card_front=" + frame_card_front.getVisibility());
-            Log.i(TAG, "bindViews: position=" + position + "; frame_card_back=" + frame_card_back.getVisibility());
+            Log.i(TAG, "bindViews: position=" + position + "; frame_card_front=" + frame_card_front.getAlpha());
+            Log.i(TAG, "bindViews: position=" + position + "; frame_card_back=" + frame_card_back.getAlpha());
 
             String type = card.getType();
             if (type != null) {
@@ -161,8 +163,8 @@ public class CardTypeRecyclerViewAdapter extends RecyclerView.Adapter<CardTypeRe
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    frame_card_back.setVisibility(View.VISIBLE);
-                    frame_card_front.setVisibility(View.VISIBLE);
+//                    frame_card_back.setVisibility(View.VISIBLE);
+//                    frame_card_front.setVisibility(View.VISIBLE);
                     flipCard(frame_card_front, frame_card_back);
                     card.setFront(true);
                 }
