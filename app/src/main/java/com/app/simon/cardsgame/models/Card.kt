@@ -11,9 +11,9 @@ class Card {
     /**
      * type : 性格
      * content : 问题具体内容
-     * isBack : false
+     * isFront : false
      */
     var type: String? = null
     var content: String? = null
-    var isBack: Boolean = false
+    var isFront: Boolean = false
 }

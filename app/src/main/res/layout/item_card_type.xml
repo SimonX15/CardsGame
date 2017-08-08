@@ -6,7 +6,8 @@
              android:layout_gravity="center"
              tools:showIn="@layout/content_main">
 
+    <include layout="@layout/partial_card_front"/>
+
     <include layout="@layout/partial_card_back"/>
 
-    <include layout="@layout/partial_card_front"/>
 </FrameLayout>

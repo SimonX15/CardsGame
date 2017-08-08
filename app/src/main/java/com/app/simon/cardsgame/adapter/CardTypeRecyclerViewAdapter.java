@@ -91,8 +91,8 @@ public class CardTypeRecyclerViewAdapter extends RecyclerView.Adapter<CardTypeRe
         private TextView text_card_front_content;
         private TextView text_card_back_content;
 
-        /** 是否正在显示背面 */
-        private boolean isBackShowing = false;
+        /** 是否正在显示正面，默认进来的时候，背面朝上 */
+        private boolean isFrontShowing = false;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -139,15 +139,15 @@ public class CardTypeRecyclerViewAdapter extends RecyclerView.Adapter<CardTypeRe
                     img_card_front.setImageResource(R.mipmap.ic_type_default_front);
                 }
             }
-            text_card_back_content.setText(card.getContent());
+            text_card_front_content.setText(card.getContent());
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    frame_card_back.setVisibility(View.VISIBLE);
-                    frame_card_front.setVisibility(View.VISIBLE);
+//                    frame_card_back.setVisibility(View.VISIBLE);
+//                    frame_card_front.setVisibility(View.VISIBLE);
                     flipCard(frame_card_front, frame_card_back);
-                    card.setBack(true);
+                    card.setFront(true);
                 }
             });
         }
@@ -159,9 +159,8 @@ public class CardTypeRecyclerViewAdapter extends RecyclerView.Adapter<CardTypeRe
          * @param backView
          */
         private void flipCard(View frontView, View backView) {
-            // 正面朝上
-            if (!isBackShowing) {
-                //显示背面，隐藏正面
+            if (isFrontShowing) {
+                //正面朝上：显示背面，隐藏正面
                 AnimatorUtil.INSTANCE.setViewLeftInStart(backView);
                 AnimatorUtil.INSTANCE.setViewRightOutStart(frontView, new AnimatorUtil.OnViewAnimatorListener() {
                     @Override
@@ -170,7 +169,7 @@ public class CardTypeRecyclerViewAdapter extends RecyclerView.Adapter<CardTypeRe
                     }
                 });
 
-                isBackShowing = true;
+                isFrontShowing = true;
             } else {
                 // 背面朝上： 隐藏背面，显示正面
                 AnimatorUtil.INSTANCE.setViewLeftInStart(frontView);
@@ -181,7 +180,8 @@ public class CardTypeRecyclerViewAdapter extends RecyclerView.Adapter<CardTypeRe
                     }
                 });
 
-                isBackShowing = false;
+                isFrontShowing = false;
+
             }
         }
 
