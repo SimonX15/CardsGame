@@ -14,6 +14,7 @@ class Card {
      * isFront : false
      */
     var type: String? = null
+    var name: String? = null
     var content: String? = null
     var isFront: Boolean = false
 }

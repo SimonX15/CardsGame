@@ -2,6 +2,7 @@ package com.app.simon.cardsgame.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -111,6 +112,18 @@ public class CardTypeRecyclerViewAdapter extends RecyclerView.Adapter<CardTypeRe
             if (card == null) {
                 return;
             }
+
+            if (card.isFront()) {
+                frame_card_front.setVisibility(View.VISIBLE);
+                frame_card_back.setVisibility(View.INVISIBLE);
+            } else {
+                frame_card_front.setVisibility(View.INVISIBLE);
+                frame_card_back.setVisibility(View.VISIBLE);
+            }
+
+            Log.i(TAG, "bindViews: position=" + position + "; frame_card_front=" + frame_card_front.getVisibility());
+            Log.i(TAG, "bindViews: position=" + position + "; frame_card_back=" + frame_card_back.getVisibility());
+
             String type = card.getType();
             if (type != null) {
                 if (type.equals(Constant.INSTANCE.getCARD_TYPE_FIRE())) {
@@ -139,13 +152,17 @@ public class CardTypeRecyclerViewAdapter extends RecyclerView.Adapter<CardTypeRe
                     img_card_front.setImageResource(R.mipmap.ic_type_default_front);
                 }
             }
+
+//            Log.i(TAG, "position=" + position + ";front=" + card.isFront());
+
+            text_card_back_content.setText(card.getName());
             text_card_front_content.setText(card.getContent());
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    frame_card_back.setVisibility(View.VISIBLE);
-//                    frame_card_front.setVisibility(View.VISIBLE);
+                    frame_card_back.setVisibility(View.VISIBLE);
+                    frame_card_front.setVisibility(View.VISIBLE);
                     flipCard(frame_card_front, frame_card_back);
                     card.setFront(true);
                 }

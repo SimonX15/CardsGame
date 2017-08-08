@@ -91,13 +91,20 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     override fun initData() {
         cardTypeList = ArrayList<Card>()
 
-        for (value in Constant.VALUE_THEME) {
+        Constant.VALUE_THEME2.forEachIndexed { index, value ->
             val card = Card()
+            card.name = "NAME " + index
             card.type = Constant.CARD_TYPE[MathUtil.getRandomNum(0, Constant.CARD_TYPE.size)]
             card.content = value
             cardTypeList!!.add(card)
         }
 
+        /*for (value in Constant.VALUE_THEME) {
+            val card = Card()
+            card.type = Constant.CARD_TYPE[MathUtil.getRandomNum(0, Constant.CARD_TYPE.size)]
+            card.content = value
+            cardTypeList!!.add(card)
+        }*/
     }
 
 
