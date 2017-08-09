@@ -93,8 +93,8 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
         Constant.VALUE_THEME.forEachIndexed { index, value ->
             val card = Card()
-            card.name = "NAME " + index
-            card.type = Constant.CARD_TYPE[MathUtil.getRandomNum(0, Constant.CARD_TYPE.size)]
+            card.name = "标题 " + index
+            card.type = Constant.CARD_TYPE[MathUtil.getRandomNum(Constant.CARD_TYPE.size)]
             card.content = value
             cardTypeList!!.add(card)
         }
@@ -126,7 +126,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         //adapter
         adapter = CardTypeRecyclerViewAdapter(this)
         recycle_view.adapter = adapter
-        adapter!!.addItems(cardTypeList)
+        adapter!!.addItems(cardTypeList!!)
     }
 
     override fun refreshViews() {
