@@ -9,11 +9,11 @@ package com.app.simon.cardsgame.models
 class Card {
 
     /**
-     * type : 性格
+     * cardTheme : 性格
      * content : 问题具体内容
      * isFront : false
      */
-    var type: String? = null
+    var cardTheme: String? = null
     var name: String? = null
     var content: String? = null
     var frontImgId: Int = 0

@@ -9,23 +9,28 @@ import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ArrayAdapter
 import com.app.simon.base.BaseActivity
 import com.app.simon.base.callback.IViewCallBack
 import com.app.simon.base.util.LogUtil
-import com.app.simon.base.util.MathUtil
 import com.app.simon.base.util.postRefreshing
 import com.app.simon.cardsgame.adapter.CardRecyclerViewAdapter
 import com.app.simon.cardsgame.data.Constant
 import com.app.simon.cardsgame.models.Card
+import com.app.simon.cardsgame.util.CardUtil
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
-import java.util.*
 
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener, IViewCallBack {
 
+    private val THEME_DEFAULT = 0
+
     private var cardList: MutableList<Card>? = null
-    private var adapter: CardRecyclerViewAdapter? = null
+    private var cardAdapter: CardRecyclerViewAdapter? = null
+
+    private var themeList: MutableList<String>? = null
+    private var themeAdapter: ArrayAdapter<String>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -90,18 +95,16 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
 
     override fun initData() {
-        if (cardList == null) {
-            cardList = ArrayList<Card>()
-        }
-        cardList!!.clear()
-        Constant.VALUE_AMAZING_36.forEachIndexed { index, value ->
-            val card = Card()
-            card.name = "标题 " + index
-            card.type = Constant.CARD_TYPE[MathUtil.getRandomNum(Constant.CARD_TYPE.size)]
-            card.content = value
-            cardList!!.add(card)
-        }
-        Collections.shuffle(cardList)
+        initTheme()
+        initCard()
+    }
+
+    private fun initTheme() {
+        themeList = CardUtil.getTheme()
+    }
+
+    private fun initCard() {
+        refreshData(themeList!![THEME_DEFAULT])
     }
 
 
@@ -113,32 +116,57 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                     .setAction("Action", null).show()
         }
 
-        val toggle = ActionBarDrawerToggle(
-                this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        val toggle = ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.setDrawerListener(toggle)
         toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener(this)
 
-        //adapter
-        adapter = CardRecyclerViewAdapter(this)
-        recycle_view.adapter = adapter
+        //spinner
+        themeAdapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, themeList)
+        spinner.adapter = themeAdapter
+        spinner.setSelection(THEME_DEFAULT)
+        spinner.setOnItemClickListener { parent, view, position, id ->
+            refreshData(themeList!![position])
+        }
 
+        //cardAdapter
+        cardAdapter = CardRecyclerViewAdapter(this)
+        recycle_view.adapter = cardAdapter
+
+        //swipe
         swipe_refresh_layout.setOnRefreshListener {
             swipe_refresh_layout.postRefreshing = true
-            refreshData()
+            refreshData(themeList!![spinner.selectedItemPosition])
+            swipe_refresh_layout.postRefreshing = false
         }
     }
 
-    fun refreshData() {
-        adapter!!.clear()
-        initData()
-        refreshViews()
-        swipe_refresh_layout.postRefreshing = false
+    /**
+     * 刷新数据
+     */
+    fun refreshData(value: String) {
+        when (value) {
+            Constant.THEME_36 -> {
+                cardAdapter!!.clear()
+                cardList = CardUtil.getAmazing36Records(false)
+                refreshViews()
+            }
+            Constant.THEME_FRIEND -> {
+                cardAdapter!!.clear()
+                cardList = CardUtil.getFriendRecords(false)
+                refreshViews()
+            }
+            else -> {
+                cardAdapter!!.clear()
+                cardList = CardUtil.getAmazing36Records(false)
+                refreshViews()
+            }
+        }
     }
 
     override fun refreshViews() {
-        adapter!!.addItems(cardList!!)
+        cardAdapter!!.addItems(cardList!!)
     }
 
     companion object {

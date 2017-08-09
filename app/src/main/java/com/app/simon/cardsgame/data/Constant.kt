@@ -1,5 +1,7 @@
 package com.app.simon.cardsgame.data
 
+import com.app.simon.cardsgame.R
+
 /**
  * desc: Constant
  * date: 2017/8/8
@@ -8,25 +10,42 @@ package com.app.simon.cardsgame.data
  */
 object Constant {
 
-    val CARD_TYPE_DEFAULT = "CARD_TYPE_DEFAULT"
-    val CARD_TYPE_FIRE = "CARD_TYPE_FIRE"
-    val CARD_TYPE_SHIELD = "CARD_TYPE_SHIELD"
-    val CARD_TYPE_EAGLE = "CARD_TYPE_EAGLE"
-    val CARD_TYPE_ICE = "CARD_TYPE_ICE"
-    val CARD_TYPE_RAINBOW = "CARD_TYPE_RAINBOW"
-    val CARD_TYPE_CLOUD = "CARD_TYPE_CLOUD"
-    val CARD_TYPE_GEM = "CARD_TYPE_GEM"
-    val CARD_TYPE_SOIL = "CARD_TYPE_SOIL"
-    val CARD_TYPE_GREEN = "CARD_TYPE_GREEN"
+//    val CARD_BG_DEFAULT = "CARD_BG_DEFAULT"
+//    val CARD_BG_FIRE = "CARD_BG_FIRE"
+//    val CARD_BG_EAGLE = "CARD_BG_EAGLE"
+//    val CARD_BG_ICE = "CARD_BG_ICE"
+//    val CARD_BG_RAINBOW = "CARD_BG_RAINBOW"
+//    val CARD_BG_GEM = "CARD_BG_GEM"
+//    val CARD_BG_CRYSTAL = "CARD_BG_CRYSTAL"
+//    val CARD_BG_FEATHER = "CARD_BG_FEATHER"
+//    val CARD_BG_GOLDEN = "CARD_BG_GOLDEN"
+//    val CARD_BG_GOLD = "CARD_BG_GOLD"
+//    val CARD_BG_LIFE = "CARD_BG_LIFE"
+//    val CARD_BG_SEA = "CARD_BG_SEA"
+//    val CARD_BG_SUN = "CARD_BG_SUN"
+//    val CARD_BG_SWORD = "CARD_BG_SWORD"
+//    val CARD_BG_TEETH = "CARD_BG_TEETH"
 
-    /** 卡片类型 */
-    val CARD_TYPE = arrayOf(CARD_TYPE_DEFAULT, CARD_TYPE_FIRE, CARD_TYPE_SHIELD, CARD_TYPE_EAGLE, CARD_TYPE_ICE,
-            CARD_TYPE_RAINBOW, CARD_TYPE_CLOUD, CARD_TYPE_GEM, CARD_TYPE_SOIL, CARD_TYPE_GREEN)
+    /** 卡片背景 */
+    val CARD_BG = arrayOf(R.mipmap.ic_bg_default, R.mipmap.ic_bg_fire, R.mipmap.ic_bg_eagle, R.mipmap.ic_bg_rainbow,
+            R.mipmap.ic_bg_ice, R.mipmap.ic_bg_gem, R.mipmap.ic_bg_crystal, R.mipmap.ic_bg_feather, R.mipmap.ic_bg_gold,
+            R.mipmap.ic_bg_golden, R.mipmap.ic_bg_life, R.mipmap.ic_bg_sea, R.mipmap.ic_bg_sun, R.mipmap.ic_bg_sword,
+            R.mipmap.ic_bg_teeth)
+    /** 卡片背景 */
+    val CARD_BG_FRONT = arrayOf(R.mipmap.ic_bg_default_front, R.mipmap.ic_bg_fire_front, R.mipmap.ic_bg_eagle_front,
+            R.mipmap.ic_bg_rainbow_front, R.mipmap.ic_bg_ice_front, R.mipmap.ic_bg_gem_front, R.mipmap.ic_bg_crystal_front,
+            R.mipmap.ic_bg_feather_front, R.mipmap.ic_bg_gold_front, R.mipmap.ic_bg_golden_front, R.mipmap.ic_bg_life_front,
+            R.mipmap.ic_bg_sea_front, R.mipmap.ic_bg_sun_front, R.mipmap.ic_bg_sword_front, R.mipmap.ic_bg_teeth_front)
 
     /** 角色  */
     val KEY_ROLE = arrayOf("自己", "挚友", "战友", "亲人", "师傅", "爱人")
+
+    /** 主题 */
+    val THEME_36 = "认识彼此的简答问题"
+    val THEME_FRIEND = "好友档案"
+
     /** 主题  */
-    val KEY_THEME = arrayOf("性格", "情绪", "关系", "信仰")
+    val KEY_THEME = arrayOf(THEME_36, THEME_FRIEND)
 
 
     /** 问题，好友档案  */
