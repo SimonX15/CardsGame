@@ -35,7 +35,7 @@
 
     <style name="Card.Text.Front">
         <item name="android:textColor">@color/colorPrimary</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="Card.Text.Back">
