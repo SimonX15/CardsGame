@@ -128,6 +128,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         spinner.setSelection(THEME_DEFAULT)
         spinner.setOnItemClickListener { parent, view, position, id ->
             refreshData(themeList!![position])
+            refreshViews()
         }
 
         //cardAdapter
@@ -138,6 +139,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         swipe_refresh_layout.setOnRefreshListener {
             swipe_refresh_layout.postRefreshing = true
             refreshData(themeList!![spinner.selectedItemPosition])
+            refreshViews()
             swipe_refresh_layout.postRefreshing = false
         }
     }
@@ -148,24 +150,19 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     fun refreshData(value: String) {
         when (value) {
             Constant.THEME_36 -> {
-                cardAdapter!!.clear()
                 cardList = CardUtil.getAmazing36Records(false)
-                refreshViews()
             }
             Constant.THEME_FRIEND -> {
-                cardAdapter!!.clear()
                 cardList = CardUtil.getFriendRecords(false)
-                refreshViews()
             }
             else -> {
-                cardAdapter!!.clear()
                 cardList = CardUtil.getAmazing36Records(false)
-                refreshViews()
             }
         }
     }
 
     override fun refreshViews() {
+        cardAdapter!!.clear()
         cardAdapter!!.addItems(cardList!!)
     }
 
