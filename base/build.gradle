@@ -23,8 +23,6 @@ android {
     }
 }
 
-ext.support_version = '25.3.1'
-
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 

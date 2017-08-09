@@ -87,7 +87,7 @@ class CardTypeRecyclerViewAdapter(private val context: Context) : RecyclerView.A
         private var isFrontShowing = false
 
         init {
-            this.frame_card_back = itemView!!.findViewById(R.id.frame_card_back) as FrameLayout
+            this.frame_card_back = itemView?.findViewById(R.id.frame_card_back) as FrameLayout
             this.frame_card_front = itemView.findViewById(R.id.frame_card_front) as FrameLayout
             this.img_card_back = itemView.findViewById(R.id.img_card_back) as RoundImageView
             this.img_card_front = itemView.findViewById(R.id.img_card_front) as RoundImageView
