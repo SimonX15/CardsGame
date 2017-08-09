@@ -14,7 +14,7 @@ import com.app.simon.base.callback.IViewCallBack
 import com.app.simon.base.util.LogUtil
 import com.app.simon.base.util.MathUtil
 import com.app.simon.base.util.postRefreshing
-import com.app.simon.cardsgame.adapter.CardTypeRecyclerViewAdapter
+import com.app.simon.cardsgame.adapter.CardRecyclerViewAdapter
 import com.app.simon.cardsgame.data.Constant
 import com.app.simon.cardsgame.models.Card
 import kotlinx.android.synthetic.main.activity_main.*
@@ -25,7 +25,7 @@ import java.util.*
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener, IViewCallBack {
 
     private var cardList: MutableList<Card>? = null
-    private var adapter: CardTypeRecyclerViewAdapter? = null
+    private var adapter: CardRecyclerViewAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -94,7 +94,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             cardList = ArrayList<Card>()
         }
         cardList!!.clear()
-        Constant.VALUE_THEME.forEachIndexed { index, value ->
+        Constant.VALUE_AMAZING_36.forEachIndexed { index, value ->
             val card = Card()
             card.name = "标题 " + index
             card.type = Constant.CARD_TYPE[MathUtil.getRandomNum(Constant.CARD_TYPE.size)]
@@ -121,7 +121,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         nav_view.setNavigationItemSelectedListener(this)
 
         //adapter
-        adapter = CardTypeRecyclerViewAdapter(this)
+        adapter = CardRecyclerViewAdapter(this)
         recycle_view.adapter = adapter
 
         swipe_refresh_layout.setOnRefreshListener {

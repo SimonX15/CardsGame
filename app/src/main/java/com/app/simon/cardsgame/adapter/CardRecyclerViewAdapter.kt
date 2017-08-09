@@ -9,7 +9,6 @@ import android.widget.FrameLayout
 import android.widget.TextView
 import com.app.simon.base.widgets.RoundImageView
 import com.app.simon.cardsgame.R
-import com.app.simon.cardsgame.data.Constant
 import com.app.simon.cardsgame.models.Card
 import com.app.simon.cardsgame.util.AnimatorUtil
 import java.util.*
@@ -21,25 +20,25 @@ import java.util.*
  *
  * @author xw
  */
-class CardTypeRecyclerViewAdapter(private val context: Context) : RecyclerView.Adapter<CardTypeRecyclerViewAdapter.CardItemViewHolder>() {
-    private var cardTypeList: MutableList<Card>? = null
-    private var onCardTypeItemClickListener: OnCardTypeItemClickListener? = null
+class CardRecyclerViewAdapter(private val context: Context) : RecyclerView.Adapter<CardRecyclerViewAdapter.CardItemViewHolder>() {
+    private var cardList: MutableList<Card>? = null
+    private var onCardItemClickListener: OnCardItemClickListener? = null
 
     init {
-        if (cardTypeList == null) {
-            cardTypeList = ArrayList<Card>()
+        if (cardList == null) {
+            cardList = ArrayList<Card>()
         }
     }
 
-    /**--------------数据处理---------------------- */
+    /** --------------------------数据处理-------------------------- */
     /**
      * 添加List
 
      * @param items
      */
     fun addItems(items: List<Card>) {
-        val index = cardTypeList!!.size
-        cardTypeList!!.addAll(index, items)
+        val index = cardList!!.size
+        cardList!!.addAll(index, items)
         notifyItemChanged(index)
     }
 
@@ -49,15 +48,22 @@ class CardTypeRecyclerViewAdapter(private val context: Context) : RecyclerView.A
      * @param item
      */
     fun addItem(item: Card) {
-        cardTypeList!!.add(item)
-        notifyItemInserted(cardTypeList!!.size)
+        cardList!!.add(item)
+        notifyItemInserted(cardList!!.size)
+    }
+
+    /**
+     * 返回cardList
+     */
+    fun getItems(): MutableList<Card>? {
+        return cardList
     }
 
     /**
      * 清除
      */
     fun clear() {
-        cardTypeList!!.clear()
+        cardList!!.clear()
         notifyDataSetChanged()
     }
 
@@ -67,11 +73,11 @@ class CardTypeRecyclerViewAdapter(private val context: Context) : RecyclerView.A
     }
 
     override fun onBindViewHolder(holder: CardItemViewHolder, position: Int) {
-        holder.bindViews(cardTypeList!![position], position)
+        holder.bindViews(cardList!![position], position)
     }
 
     override fun getItemCount(): Int {
-        return cardTypeList!!.size
+        return cardList!!.size
     }
 
     /** --------------------------ViewHolder-------------------------- */
@@ -99,32 +105,17 @@ class CardTypeRecyclerViewAdapter(private val context: Context) : RecyclerView.A
 
         /** 绑定views */
         fun bindViews(card: Card, position: Int) {
-            val type = card.type
 
-            if (type == Constant.CARD_TYPE_FIRE) {
-                img_card_back.setImageResource(R.mipmap.ic_type_fire)
-                img_card_front.setImageResource(R.mipmap.ic_type_default_front)
-            } else if (type == Constant.CARD_TYPE_SHIELD) {
-                img_card_back.setImageResource(R.mipmap.ic_type_shield)
-                img_card_front.setImageResource(R.mipmap.ic_type_default_front)
-            } else if (type == Constant.CARD_TYPE_EAGLE) {
-                img_card_back.setImageResource(R.mipmap.ic_type_eagle)
-                img_card_front.setImageResource(R.mipmap.ic_type_default_front)
-            } else if (type == Constant.CARD_TYPE_ICE) {
-                img_card_back.setImageResource(R.mipmap.ic_type_ice)
-                img_card_front.setImageResource(R.mipmap.ic_type_default_front)
-            } else if (type == Constant.CARD_TYPE_RAINBOW) {
-                img_card_back.setImageResource(R.mipmap.ic_type_rainbow)
-                img_card_front.setImageResource(R.mipmap.ic_type_default_front)
-            } else if (type == Constant.CARD_TYPE_CLOUD) {
-                img_card_back.setImageResource(R.mipmap.ic_type_cloud)
-                img_card_front.setImageResource(R.mipmap.ic_type_default_front)
-            } else if (type == Constant.CARD_TYPE_GEM) {
-                img_card_back.setImageResource(R.mipmap.ic_type_gem)
-                img_card_front.setImageResource(R.mipmap.ic_type_default_front)
+            if (card.backImgId != 0) {
+                img_card_back.setImageResource(card.backImgId)
             } else {
-                img_card_back.setImageResource(R.mipmap.ic_type_default)
-                img_card_front.setImageResource(R.mipmap.ic_type_default_front)
+                img_card_back.setImageResource(R.mipmap.ic_bg_default)
+            }
+
+            if (card.frontImgId != 0) {
+                img_card_front.setImageResource(card.frontImgId)
+            } else {
+                img_card_front.setImageResource(R.mipmap.ic_bg_default_front)
             }
 
 //            text_card_back_content.text = card.name
@@ -144,10 +135,10 @@ class CardTypeRecyclerViewAdapter(private val context: Context) : RecyclerView.A
 //            LogUtil.i(TAG, "position=" + position + ";frame_card_front.rotationY=" + frame_card_front.rotationY)
 //            LogUtil.i(TAG, "position=" + position + ";frame_card_back.rotationY=" + frame_card_back.rotationY)
 
-            itemView.setOnClickListener(View.OnClickListener {
+            itemView.setOnClickListener {
                 flipCard(frame_card_front, frame_card_back)
                 card.isFront = true
-            })
+            }
         }
 
         private fun setViewStatus(view: View, isShow: Boolean) {
@@ -203,16 +194,18 @@ class CardTypeRecyclerViewAdapter(private val context: Context) : RecyclerView.A
         }
     }
 
-    interface OnCardTypeItemClickListener {
+
+    /** --------------------------listener-------------------------- */
+    interface OnCardItemClickListener {
         fun onItemClick()
     }
 
-    fun setOnCardTypeItemClickListener(onCardTypeItemClickListener: OnCardTypeItemClickListener) {
-        this.onCardTypeItemClickListener = onCardTypeItemClickListener
+    fun setOnCardTypeItemClickListener(onCardItemClickListener: OnCardItemClickListener) {
+        this.onCardItemClickListener = onCardItemClickListener
     }
 
     companion object {
-        var TAG = CardTypeRecyclerViewAdapter::class.java.simpleName
+        var TAG = CardRecyclerViewAdapter::class.java.simpleName
     }
 
 }

@@ -16,5 +16,7 @@ class Card {
     var type: String? = null
     var name: String? = null
     var content: String? = null
+    var frontImgId: Int = 0
+    var backImgId: Int = 0
     var isFront: Boolean = false
 }

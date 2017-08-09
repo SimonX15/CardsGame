@@ -17,10 +17,11 @@ object Constant {
     val CARD_TYPE_CLOUD = "CARD_TYPE_CLOUD"
     val CARD_TYPE_GEM = "CARD_TYPE_GEM"
     val CARD_TYPE_SOIL = "CARD_TYPE_SOIL"
+    val CARD_TYPE_GREEN = "CARD_TYPE_GREEN"
 
     /** 卡片类型 */
     val CARD_TYPE = arrayOf(CARD_TYPE_DEFAULT, CARD_TYPE_FIRE, CARD_TYPE_SHIELD, CARD_TYPE_EAGLE, CARD_TYPE_ICE,
-            CARD_TYPE_RAINBOW, CARD_TYPE_CLOUD, CARD_TYPE_GEM, CARD_TYPE_SOIL)
+            CARD_TYPE_RAINBOW, CARD_TYPE_CLOUD, CARD_TYPE_GEM, CARD_TYPE_SOIL, CARD_TYPE_GREEN)
 
     /** 角色  */
     val KEY_ROLE = arrayOf("自己", "挚友", "战友", "亲人", "师傅", "爱人")
@@ -28,7 +29,7 @@ object Constant {
     val KEY_THEME = arrayOf("性格", "情绪", "关系", "信仰")
 
 
-    /** 主题  */
+    /** 问题，好友档案  */
     val VALUE_FRIEND_RECORD = arrayOf(
             "家庭组成是怎样的？关系怎么样呢？",
             "喜欢什么运动？",
@@ -57,8 +58,8 @@ object Constant {
             "你欣赏的异性的特质有哪些？",
             "你心目中最美好的场景是怎样的或者你一直想做的事情？")
 
-    /** 主题类的问题  */
-    val VALUE_THEME = arrayOf(
+    /** 问题，神奇的36问  */
+    val VALUE_AMAZING_36 = arrayOf(
             "假如可以选择世界上任何人，你希望邀请谁共进一餐？",
             "你希望成名吗？在哪一方面？",
             "拨打电话前，你会先练习要说的话吗？为什么？",

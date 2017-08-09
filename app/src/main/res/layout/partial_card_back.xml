@@ -11,7 +11,7 @@
         android:id="@+id/img_card_back"
         style="@style/Card"
         android:contentDescription="@null"
-        android:src="@mipmap/ic_type_default"
+        android:src="@mipmap/ic_bg_default"
         app:borderRadius="10dp"
         app:type="round"/>
 
