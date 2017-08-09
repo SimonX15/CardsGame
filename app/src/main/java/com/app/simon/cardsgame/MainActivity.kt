@@ -13,6 +13,7 @@ import com.app.simon.base.BaseActivity
 import com.app.simon.base.callback.IViewCallBack
 import com.app.simon.base.util.LogUtil
 import com.app.simon.base.util.MathUtil
+import com.app.simon.base.util.postRefreshing
 import com.app.simon.cardsgame.adapter.CardTypeRecyclerViewAdapter
 import com.app.simon.cardsgame.data.Constant
 import com.app.simon.cardsgame.models.Card
@@ -23,7 +24,7 @@ import java.util.*
 
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener, IViewCallBack {
 
-    private var cardTypeList: MutableList<Card>? = null
+    private var cardList: MutableList<Card>? = null
     private var adapter: CardTypeRecyclerViewAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -89,22 +90,18 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
 
     override fun initData() {
-        cardTypeList = ArrayList<Card>()
-
+        if (cardList == null) {
+            cardList = ArrayList<Card>()
+        }
+        cardList!!.clear()
         Constant.VALUE_THEME.forEachIndexed { index, value ->
             val card = Card()
             card.name = "标题 " + index
             card.type = Constant.CARD_TYPE[MathUtil.getRandomNum(Constant.CARD_TYPE.size)]
             card.content = value
-            cardTypeList!!.add(card)
+            cardList!!.add(card)
         }
-
-        /*for (value in Constant.VALUE_THEME) {
-            val card = Card()
-            card.type = Constant.CARD_TYPE[MathUtil.getRandomNum(0, Constant.CARD_TYPE.size)]
-            card.content = value
-            cardTypeList!!.add(card)
-        }*/
+        Collections.shuffle(cardList)
     }
 
 
@@ -126,11 +123,22 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         //adapter
         adapter = CardTypeRecyclerViewAdapter(this)
         recycle_view.adapter = adapter
-        adapter!!.addItems(cardTypeList!!)
+
+        swipe_refresh_layout.setOnRefreshListener {
+            swipe_refresh_layout.postRefreshing = true
+            refreshData()
+        }
+    }
+
+    fun refreshData() {
+        adapter!!.clear()
+        initData()
+        refreshViews()
+        swipe_refresh_layout.postRefreshing = false
     }
 
     override fun refreshViews() {
-
+        adapter!!.addItems(cardList!!)
     }
 
     companion object {

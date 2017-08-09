@@ -58,6 +58,7 @@ class CardTypeRecyclerViewAdapter(private val context: Context) : RecyclerView.A
      */
     fun clear() {
         cardTypeList!!.clear()
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardItemViewHolder {
@@ -73,6 +74,7 @@ class CardTypeRecyclerViewAdapter(private val context: Context) : RecyclerView.A
         return cardTypeList!!.size
     }
 
+    /** --------------------------ViewHolder-------------------------- */
     inner class CardItemViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
         private val frame_card_back: FrameLayout
         private val frame_card_front: FrameLayout
@@ -95,6 +97,7 @@ class CardTypeRecyclerViewAdapter(private val context: Context) : RecyclerView.A
             setCameraDistance(frame_card_front, frame_card_back)
         }
 
+        /** 绑定views */
         fun bindViews(card: Card, position: Int) {
             val type = card.type
 
@@ -126,7 +129,6 @@ class CardTypeRecyclerViewAdapter(private val context: Context) : RecyclerView.A
 
 //            text_card_back_content.text = card.name
             text_card_front_content.text = card.content
-
 
             //Add by xw at 2017/8/9：因为有动画效果，所有重新加载的时候，alpha和rotationY会重置，需要再次设置一下
             if (card.isFront) {
@@ -190,7 +192,9 @@ class CardTypeRecyclerViewAdapter(private val context: Context) : RecyclerView.A
             }
         }
 
-        // 改变视角距离, 贴近屏幕
+        /**
+         * 改变视角距离, 贴近屏幕
+         */
         private fun setCameraDistance(front: View, back: View) {
             val distance = 16000
             val scale = context.resources.displayMetrics.density * distance
@@ -210,4 +214,5 @@ class CardTypeRecyclerViewAdapter(private val context: Context) : RecyclerView.A
     companion object {
         var TAG = CardTypeRecyclerViewAdapter::class.java.simpleName
     }
+
 }
