@@ -150,7 +150,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         nav_view.setNavigationItemSelectedListener(this)
 
         //spinner_theme
-        themeAdapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, themeList)
+        themeAdapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, themeList)
         spinner_theme.adapter = themeAdapter
         spinner_theme.setSelection(themeIndex)
         spinner_theme.onItemSelectedListener = object : OnItemSelectedListener {
@@ -165,7 +165,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         }
 
         //spinner_bg
-        bgAdapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, bgNameList)
+        bgAdapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, bgNameList)
         spinner_bg.adapter = bgAdapter
         spinner_bg.setSelection(bgIndex)
         spinner_bg.onItemSelectedListener = object : OnItemSelectedListener {
@@ -178,6 +178,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         }
 
         //是否乱序
+        check_is_shuffle.isChecked = isShuffle
         check_is_shuffle.setOnCheckedChangeListener { buttonView, isChecked ->
             isShuffle = isChecked
         }

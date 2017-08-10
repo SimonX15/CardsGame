@@ -13,17 +13,20 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:padding="6dp">
+        android:layout_margin="6dp"
+        android:gravity="center_vertical">
 
         <Spinner
             android:id="@+id/spinner_theme"
-            android:layout_width="120dp"
-            android:layout_height="40dp"/>
+            style="@style/SpinnerDefault"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"/>
 
         <Spinner
             android:id="@+id/spinner_bg"
-            android:layout_width="120dp"
+            style="@style/SpinnerDefault"
+            android:layout_width="80dp"
             android:layout_height="40dp"
             android:layout_marginLeft="10dp"/>
 

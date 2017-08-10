@@ -45,4 +45,10 @@
     </style>
 
 
+    <style name="SpinnerDefault">
+        <item name="android:background">@drawable/shape_stroke_gray</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+
 </resources>
