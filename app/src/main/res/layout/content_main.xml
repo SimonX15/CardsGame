@@ -30,7 +30,7 @@
             <Spinner
                 android:id="@+id/spinner_bg"
                 style="@style/SpinnerDefault"
-                android:layout_width="80dp"
+                android:layout_width="90dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="10dp"/>
 
@@ -38,7 +38,7 @@
                 android:id="@+id/check_is_shuffle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="4dp"
                 android:text="乱序排列"/>
         </LinearLayout>
 

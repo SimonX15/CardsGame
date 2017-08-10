@@ -80,8 +80,8 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.main, menu)
+        //hide
+//        menuInflater.inflate(R.menu.main, menu)
         return true
     }
 
@@ -90,7 +90,6 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         val id = item.itemId
-
 
         if (id == R.id.action_settings) {
             LogUtil.i(TAG, "action_settings")
@@ -101,24 +100,28 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        // Handle navigation view item clicks here.
-        val id = item.itemId
+        when (item.itemId) {
+            R.id.nav_setting -> {
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-            LogUtil.i(TAG, "nav_camera")
-        } else if (id == R.id.nav_gallery) {
-            LogUtil.i(TAG, "nav_gallery")
-        } else if (id == R.id.nav_slideshow) {
-            LogUtil.i(TAG, "nav_slideshow")
-        } else if (id == R.id.nav_manage) {
-            LogUtil.i(TAG, "nav_manage")
-        } else if (id == R.id.nav_share) {
-            LogUtil.i(TAG, "nav_share")
-        } else if (id == R.id.nav_send) {
-            LogUtil.i(TAG, "nav_send")
+            }
+            R.id.nav_about -> {
+
+            }
+//            R.id.nav_camera -> {
+//            }
+//            R.id.nav_gallery -> {
+//            }
+//            R.id.nav_slideshow -> {
+//            }
+//            R.id.nav_manage -> {
+//            }
+//            R.id.nav_developer -> {
+//            }
+//            R.id.nav_version -> {
+//            }
+            else -> {
+            }
         }
-
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
