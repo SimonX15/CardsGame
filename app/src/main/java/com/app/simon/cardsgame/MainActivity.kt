@@ -105,7 +105,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
             }
             R.id.nav_about -> {
-
+                AboutActivity.launch(this)
             }
 //            R.id.nav_camera -> {
 //            }
