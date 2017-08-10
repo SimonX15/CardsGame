@@ -23,7 +23,7 @@ public class PhoneCallUtil {
             intent.setData(Uri.parse(url));
             context.startActivity(intent);
         } catch (ActivityNotFoundException e) {
-            ToastUtil.showShort(context, "没有电话应用");
+            ToastUtil.INSTANCE.showShort(context, "没有电话应用");
         }
     }
 
@@ -38,7 +38,7 @@ public class PhoneCallUtil {
             intent.setData(Uri.parse(url));
             context.startActivity(intent);
         } catch (ActivityNotFoundException e) {
-            ToastUtil.showShort(context, "没有电话应用");
+            ToastUtil.INSTANCE.showShort(context, "没有电话应用");
         }
     }
 }

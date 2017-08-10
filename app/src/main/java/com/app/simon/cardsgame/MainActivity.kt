@@ -24,6 +24,8 @@ import com.app.simon.cardsgame.util.CardUtil
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
+import org.jetbrains.anko.toast
+import java.util.*
 
 
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener, IViewCallBack {
@@ -51,6 +53,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     /** 是否乱序排列 */
     private var isShuffle = true
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -64,7 +67,15 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
             drawer_layout.closeDrawer(GravityCompat.START)
         } else {
-            super.onBackPressed()
+            val time = Calendar.getInstance().time.time
+            if (time - lastBackPressTime > 2000L) {
+                lastBackPressTime = time
+                toast("再按一次退出程序")
+            } else {
+//          super.onBackPressed()
+                finish()
+//            System.exit(0)
+            }
         }
     }
 
@@ -117,21 +128,6 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         initTheme()
         initBg()
         initCard()
-    }
-
-    private fun initTheme() {
-        themeIndex = THEME_DEFAULT
-        themeList = CardUtil.getThemeList()
-    }
-
-    private fun initBg() {
-        bgIndex = BG_DEFAULT
-        bgList = CardUtil.getBgResIdList()
-        bgNameList = CardUtil.getBgResNameList()
-    }
-
-    private fun initCard() {
-        refreshData(themeList!![themeIndex])
     }
 
 
@@ -196,6 +192,28 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         }
     }
 
+    override fun refreshViews() {
+        cardAdapter!!.clear()
+        cardAdapter!!.addItems(cardList!!)
+    }
+
+
+    private fun initTheme() {
+        themeIndex = THEME_DEFAULT
+        themeList = CardUtil.getThemeList()
+    }
+
+    private fun initBg() {
+        bgIndex = BG_DEFAULT
+        bgList = CardUtil.getBgResIdList()
+        bgNameList = CardUtil.getBgResNameList()
+    }
+
+    private fun initCard() {
+        refreshData(themeList!![themeIndex])
+    }
+
+
     /**
      * 刷新数据
      */
@@ -216,13 +234,12 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         }
     }
 
-    override fun refreshViews() {
-        cardAdapter!!.clear()
-        cardAdapter!!.addItems(cardList!!)
-    }
 
     companion object {
         private val TAG = MainActivity::class.java.simpleName
+
+        /** 最后一次点击返回的时间，用于判断退出 */
+        private var lastBackPressTime: Long = 0
 
         fun launch(activity: Activity) {
             val intent = Intent(activity, MainActivity::class.java)
