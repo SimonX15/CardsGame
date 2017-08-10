@@ -27,6 +27,10 @@ object Constant {
 //    val CARD_BG_TEETH = "CARD_BG_TEETH"
 
     /** 卡片背景 */
+    val CARD_BG_STR = arrayOf("全部", "默认", "火焰之歌", "雄鹰展翅", "彩虹之约", "冰雪奇缘", "炫彩宝石",
+            "媚惑水晶", "胜利之羽", "金之术士", "金色灿烂", "生命赞歌", "百川归海", "烈日骄阳", "剑之荣耀", "魔兽之齿")
+
+    /** 卡片背景 */
     val CARD_BG = arrayOf(R.mipmap.ic_bg_default, R.mipmap.ic_bg_fire, R.mipmap.ic_bg_eagle, R.mipmap.ic_bg_rainbow,
             R.mipmap.ic_bg_ice, R.mipmap.ic_bg_gem, R.mipmap.ic_bg_crystal, R.mipmap.ic_bg_feather, R.mipmap.ic_bg_gold,
             R.mipmap.ic_bg_golden, R.mipmap.ic_bg_life, R.mipmap.ic_bg_sea, R.mipmap.ic_bg_sun, R.mipmap.ic_bg_sword,

@@ -17,12 +17,34 @@ object CardUtil {
     /**
      * 获取问题主题
      */
-    fun getTheme(): MutableList<String>? {
+    fun getThemeList(): MutableList<String>? {
         val themeList = ArrayList<String>()
         Constant.KEY_THEME.forEach {
             themeList.add(it)
         }
         return themeList
+    }
+
+    /**
+     * 获取背景
+     */
+    fun getBgResIdList(): MutableList<Int>? {
+        val bgResList = ArrayList<Int>()
+        Constant.CARD_BG.forEach {
+            bgResList.add(it)
+        }
+        return bgResList
+    }
+
+    /**
+     * 获取背景Name
+     */
+    fun getBgResNameList(): MutableList<String>? {
+        val bgResList = ArrayList<String>()
+        Constant.CARD_BG_STR.forEach {
+            bgResList.add(it)
+        }
+        return bgResList
     }
 
     /**
