@@ -15,7 +15,6 @@ import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
 import com.app.simon.base.BaseActivity
 import com.app.simon.base.callback.IViewCallBack
-import com.app.simon.base.util.LogUtil
 import com.app.simon.base.util.postRefreshing
 import com.app.simon.cardsgame.adapter.CardRecyclerViewAdapter
 import com.app.simon.cardsgame.data.Constant
@@ -83,20 +82,6 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         //hide
 //        menuInflater.inflate(R.menu.main, menu)
         return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        val id = item.itemId
-
-        if (id == R.id.action_settings) {
-            LogUtil.i(TAG, "action_settings")
-            return true
-        }
-
-        return super.onOptionsItemSelected(item)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
