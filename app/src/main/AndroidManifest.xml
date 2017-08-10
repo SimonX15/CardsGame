@@ -22,12 +22,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".WelcomeActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:name=".WelcomeActivity"/>
         <activity
             android:name=".AboutActivity"
-            android:label="关于"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:label="关于"/>
     </application>
 
 </manifest>

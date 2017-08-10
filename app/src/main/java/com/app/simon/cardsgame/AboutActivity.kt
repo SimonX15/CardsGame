@@ -19,7 +19,10 @@ class AboutActivity : BaseActivity(), IViewCallBack {
 
     override fun assignViews() {
         setSupportActionBar(toolbar)
+        supportActionBar?.title = "关于"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+//        text_version.text =
     }
 
     override fun refreshViews() {
