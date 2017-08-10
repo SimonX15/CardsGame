@@ -1,4 +1,4 @@
-package com.app.simon.cardsgame
+package com.app.simon.cardsgame.application
 
 import android.app.Application
 
