@@ -10,30 +10,35 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_about">
 
-    <ImageView
-        android:id="@+id/img_header"
+    <FrameLayout
+        android:id="@+id/frame_version"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
-        android:src="@mipmap/ic_logo"
-        android:visibility="gone"/>
+        android:layout_marginTop="10dp">
+
+        <ImageView
+            android:id="@+id/img_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@mipmap/ic_about_version_bg"/>
+
+        <TextView
+            android:id="@+id/text_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            tools:text="v1.0"/>
+
+    </FrameLayout>
 
     <TextView
         android:id="@+id/text_develop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="Developer Simon"/>
-
-    <TextView
-        android:id="@+id/text_version"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/text_develop"
-        android:layout_centerHorizontal="true"
-        tools:text="v1.0"/>
-
+        android:layout_below="@id/frame_version"
+        android:layout_marginTop="4dp"
+        android:text="By Simon"/>
 
 </RelativeLayout>
