@@ -10,6 +10,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/Base" />
             <option value="$PROJECT_DIR$/Cards" />
+            <option value="$PROJECT_DIR$/ViewPagerIndicator" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

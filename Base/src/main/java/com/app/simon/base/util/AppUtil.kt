@@ -21,12 +21,11 @@ object AppUtil {
         } catch (e: NameNotFoundException) {
             e.printStackTrace()
         }
-
         return null
     }
 
     /**
-     * [获取应用程序版本名称信息]
+     * 获取应用程序版本名称信息
 
      * @param context
      * *
@@ -37,12 +36,28 @@ object AppUtil {
             val packageManager = context.packageManager
             val packageInfo = packageManager.getPackageInfo(context.packageName, 0)
             return packageInfo.versionName
-
         } catch (e: NameNotFoundException) {
             e.printStackTrace()
         }
-
         return null
+    }
+
+    /**
+     * 获取应用程序版本名称信息
+
+     * @param context
+     * *
+     * @return 当前应用的版本名称
+     */
+    fun getVersionCode(context: Context): Int {
+        try {
+            val packageManager = context.packageManager
+            val packageInfo = packageManager.getPackageInfo(context.packageName, 0)
+            return packageInfo.versionCode
+        } catch (e: NameNotFoundException) {
+            e.printStackTrace()
+        }
+        return 0
     }
 
 }

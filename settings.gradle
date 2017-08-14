@@ -1,1 +1,1 @@
-include ':Cards', ':Base'
+include ':Cards', ':Base', ':ViewPagerIndicator'
