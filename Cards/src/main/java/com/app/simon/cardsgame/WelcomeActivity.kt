@@ -31,11 +31,14 @@ class WelcomeActivity : BaseActivity(), IViewCallBack {
     override fun assignViews() {
         if (isShowGuide()) {
             StartActivity.launch(this)
+            finish()
         } else {
             iv_welcome.postDelayed({
                 MainActivity.launch(this)
+                finish()
             }, DELAY_MILLIS.toLong())
         }
+
     }
 
     override fun refreshViews() {
@@ -57,6 +60,7 @@ class WelcomeActivity : BaseActivity(), IViewCallBack {
     }
 
     companion object {
+        /** 延迟时间 */
         private val DELAY_MILLIS = 1000
     }
 }
