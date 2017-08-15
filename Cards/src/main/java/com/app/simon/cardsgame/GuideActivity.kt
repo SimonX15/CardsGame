@@ -25,7 +25,7 @@ import kotlinx.android.synthetic.main.activity_guide.*
  */
 class GuideActivity : BaseActivity(), IViewCallBack {
 
-    private val resIds = intArrayOf(R.mipmap.start_1, R.mipmap.start_2, R.mipmap.start_3, R.mipmap.start_4, R.mipmap.start_5)
+    private val resIds = intArrayOf(R.mipmap.guide_1, R.mipmap.guide_2, R.mipmap.guide_3, R.mipmap.guide_4, R.mipmap.guide_5)
 
     lateinit var adapter: PageAdapter
 
