@@ -5,23 +5,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/ic_about_bg"
-    android:padding="10dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_about">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:scaleType="fitXY"
+        android:src="@mipmap/ic_about_bg"/>
 
     <FrameLayout
         android:id="@+id/frame_version"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
-
-        <ImageView
-            android:id="@+id/img_header"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@mipmap/ic_about_version_bg"/>
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="30dp">
 
         <TextView
             android:id="@+id/text_version"
@@ -31,6 +30,13 @@
             android:layout_marginTop="8dp"
             tools:text="v1.0"/>
 
+        <ImageView
+            android:id="@+id/img_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@mipmap/ic_about_version_bg"/>
+
     </FrameLayout>
 
     <TextView
@@ -38,6 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/frame_version"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="4dp"
         android:text="By Simon"/>
 
