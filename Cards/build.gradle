@@ -17,7 +17,7 @@ android {
         applicationId "com.app.simon.cardsgame"
         minSdkVersion 17
         targetSdkVersion 25
-        versionCode 3
+        versionCode 4
         versionName "0.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
