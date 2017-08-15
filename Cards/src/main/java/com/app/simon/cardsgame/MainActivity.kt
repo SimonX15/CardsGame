@@ -15,7 +15,7 @@ import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
 import com.app.simon.base.BaseActivity
 import com.app.simon.base.callback.IViewCallBack
-import com.app.simon.base.util.postRefreshing
+import com.app.simon.base.method.postRefreshing
 import com.app.simon.cardsgame.adapter.CardRecyclerViewAdapter
 import com.app.simon.cardsgame.data.Constant
 import com.app.simon.cardsgame.models.Card

@@ -13,7 +13,6 @@
         <item name="windowNoTitle">true</item>
         <item name="actionMenuTextColor">#FFFFFF</item> <!--颜色-->
         <item name="android:textSize">18sp</item> <!--字体大小-->
-
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>

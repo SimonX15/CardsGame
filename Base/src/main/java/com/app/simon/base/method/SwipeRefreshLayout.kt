@@ -1,4 +1,4 @@
-package com.app.simon.base.util
+package com.app.simon.base.method
 
 import android.support.v4.widget.SwipeRefreshLayout
 
