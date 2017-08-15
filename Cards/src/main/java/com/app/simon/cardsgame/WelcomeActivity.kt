@@ -29,11 +29,7 @@ class WelcomeActivity : BaseActivity(), IViewCallBack {
     }
 
     override fun assignViews() {
-        // FIXME: 2017/8/14 by xw TODO: TEST
-        var showGuide = isShowGuide()
-        showGuide = true
-
-        if (showGuide) {
+        if (isShowGuide()) {
             GuideActivity.launch(this)
             finish()
         } else {
