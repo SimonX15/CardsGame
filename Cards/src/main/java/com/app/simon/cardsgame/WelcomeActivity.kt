@@ -65,6 +65,6 @@ class WelcomeActivity : BaseActivity(), IViewCallBack {
 
     companion object {
         /** 延迟时间 */
-        private val DELAY_MILLIS = 1000
+        private val DELAY_MILLIS = 2000
     }
 }

@@ -9,6 +9,12 @@ import com.app.simon.base.util.AppUtil
 import kotlinx.android.synthetic.main.activity_about.*
 import kotlinx.android.synthetic.main.content_about.*
 
+/**
+ * desc: 关于
+ * date: 2017/8/15
+ *
+ * @author xw
+ */
 class AboutActivity : BaseActivity(), IViewCallBack {
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -26,7 +26,12 @@ import kotlinx.android.synthetic.main.content_main.*
 import org.jetbrains.anko.toast
 import java.util.*
 
-
+/**
+ * desc: 主页
+ * date: 2017/8/15
+ *
+ * @author xw
+ */
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener, IViewCallBack {
 
     private val THEME_DEFAULT = 0
