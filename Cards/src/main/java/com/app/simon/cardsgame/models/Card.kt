@@ -6,17 +6,16 @@ package com.app.simon.cardsgame.models
 
  * @author xw
  */
-class Card {
-
-    /**
-     * cardTheme : 性格
-     * content : 问题具体内容
-     * isFront : false
-     */
-    var cardTheme: String? = null
-    var name: String? = null
-    var content: String? = null
-    var frontImgId: Int = 0
-    var backImgId: Int = 0
-    var isFront: Boolean = false
-}
+data class Card(
+        /**
+         * cardTheme : 性格
+         * content : 问题具体内容
+         * isFront : false
+         */
+        var cardTheme: String? = null,
+        var name: String? = null,
+        var content: String? = null,
+        var frontImgId: Int = 0,
+        var backImgId: Int = 0,
+        var isFront: Boolean = false
+)
