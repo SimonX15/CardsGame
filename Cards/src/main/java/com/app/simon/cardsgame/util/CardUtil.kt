@@ -1,8 +1,10 @@
 package com.app.simon.cardsgame.util
 
 import com.app.simon.base.util.MathUtil
+import com.app.simon.cardsgame.R
 import com.app.simon.cardsgame.data.Constant
 import com.app.simon.cardsgame.models.Card
+import com.app.simon.cardsgame.models.CardImg
 import java.util.*
 
 /**
@@ -25,13 +27,35 @@ object CardUtil {
         return themeList
     }
 
+    /** 获取背景图片 */
+    fun getCardImgList(): MutableList<CardImg>? {
+        val cardImgList = ArrayList<CardImg>()
+        cardImgList.add(CardImg(name = "默认", backImgId = R.mipmap.ic_bg_default, frontImgId = R.mipmap.ic_bg_default_front))
+        cardImgList.add(CardImg(name = "火焰之歌", backImgId = R.mipmap.ic_bg_fire, frontImgId = R.mipmap.ic_bg_fire_front))
+        cardImgList.add(CardImg(name = "雄鹰展翅", backImgId = R.mipmap.ic_bg_eagle, frontImgId = R.mipmap.ic_bg_eagle_front))
+        cardImgList.add(CardImg(name = "彩虹之约", backImgId = R.mipmap.ic_bg_rainbow, frontImgId = R.mipmap.ic_bg_rainbow_front))
+        cardImgList.add(CardImg(name = "冰雪奇缘", backImgId = R.mipmap.ic_bg_ice, frontImgId = R.mipmap.ic_bg_ice_front))
+        cardImgList.add(CardImg(name = "炫彩宝石", backImgId = R.mipmap.ic_bg_gem, frontImgId = R.mipmap.ic_bg_gem_front))
+        cardImgList.add(CardImg(name = "媚惑水晶", backImgId = R.mipmap.ic_bg_crystal, frontImgId = R.mipmap.ic_bg_crystal_front))
+        cardImgList.add(CardImg(name = "胜利之羽", backImgId = R.mipmap.ic_bg_feather, frontImgId = R.mipmap.ic_bg_feather_front))
+        cardImgList.add(CardImg(name = "金之术士", backImgId = R.mipmap.ic_bg_gold, frontImgId = R.mipmap.ic_bg_gold_front))
+        cardImgList.add(CardImg(name = "金色灿烂", backImgId = R.mipmap.ic_bg_golden, frontImgId = R.mipmap.ic_bg_golden_front))
+        cardImgList.add(CardImg(name = "生命赞歌", backImgId = R.mipmap.ic_bg_life, frontImgId = R.mipmap.ic_bg_life_front))
+        cardImgList.add(CardImg(name = "百川归海", backImgId = R.mipmap.ic_bg_sea, frontImgId = R.mipmap.ic_bg_sea_front))
+        cardImgList.add(CardImg(name = "烈日骄阳", backImgId = R.mipmap.ic_bg_sun, frontImgId = R.mipmap.ic_bg_sun_front))
+        cardImgList.add(CardImg(name = "剑之荣耀", backImgId = R.mipmap.ic_bg_sword, frontImgId = R.mipmap.ic_bg_sword_front))
+        cardImgList.add(CardImg(name = "魔兽之齿", backImgId = R.mipmap.ic_bg_teeth, frontImgId = R.mipmap.ic_bg_teeth_front))
+        return cardImgList
+    }
+
+    // FIXME: 2017/9/6 by xw TODO: 换成CardImg
     /**
      * 获取背景
      */
     fun getBgResIdList(): MutableList<Int>? {
         val bgResList = ArrayList<Int>()
-        Constant.CARD_BG.forEach {
-            bgResList.add(it)
+        getCardImgList()?.forEach {
+            bgResList.add(it.backImgId)
         }
         return bgResList
     }
@@ -41,8 +65,9 @@ object CardUtil {
      */
     fun getBgResNameList(): MutableList<String>? {
         val bgResList = ArrayList<String>()
-        Constant.CARD_BG_STR.forEach {
-            bgResList.add(it)
+        bgResList.add("全部")
+        getCardImgList()?.forEach {
+            bgResList.add(it.name!!)
         }
         return bgResList
     }
@@ -54,14 +79,25 @@ object CardUtil {
         val cardList = ArrayList<Card>()
         Constant.VALUE_FRIEND_RECORD.forEachIndexed { index, value ->
             val card = Card()
-            if (bgImgId in (0..Constant.CARD_BG.size - 1)) {
+            val cardImgList = getCardImgList()!!
+
+            if (bgImgId == -1) {
+                val randomNum = MathUtil.getRandomNum(cardImgList.size)
+                card.backImgId = cardImgList[randomNum].backImgId
+                card.frontImgId = cardImgList[randomNum].frontImgId
+            } else {
+                card.backImgId = cardImgList[bgImgId].backImgId
+                card.frontImgId = cardImgList[bgImgId].frontImgId
+            }
+
+            /*if (bgImgId in (0..cardImgList!!.size - 1)) {
                 card.backImgId = Constant.CARD_BG[bgImgId]
                 card.frontImgId = Constant.CARD_BG_FRONT[bgImgId]
             } else {
                 val randomNum = MathUtil.getRandomNum(Constant.CARD_BG.size)
                 card.backImgId = Constant.CARD_BG[randomNum]
                 card.frontImgId = Constant.CARD_BG_FRONT[randomNum]
-            }
+            }*/
             card.content = value
             cardList.add(card)
         }
@@ -78,14 +114,24 @@ object CardUtil {
         val cardList = ArrayList<Card>()
         Constant.VALUE_AMAZING_36.forEachIndexed { index, value ->
             val card = Card()
-            if (bgImgId in (0..Constant.CARD_BG.size - 1)) {
+            val cardImgList = getCardImgList()!!
+            if (bgImgId == -1) {
+                val randomNum = MathUtil.getRandomNum(cardImgList.size)
+                card.backImgId = cardImgList[randomNum].backImgId
+                card.frontImgId = cardImgList[randomNum].frontImgId
+            } else {
+                card.backImgId = cardImgList[bgImgId].backImgId
+                card.frontImgId = cardImgList[bgImgId].frontImgId
+            }
+
+            /*if (bgImgId in (0..Constant.CARD_BG.size - 1)) {
                 card.backImgId = Constant.CARD_BG[bgImgId]
                 card.frontImgId = Constant.CARD_BG_FRONT[bgImgId]
             } else {
                 val randomNum = MathUtil.getRandomNum(Constant.CARD_BG.size)
                 card.backImgId = Constant.CARD_BG[randomNum]
                 card.frontImgId = Constant.CARD_BG_FRONT[randomNum]
-            }
+            }*/
             card.content = value
             cardList.add(card)
         }

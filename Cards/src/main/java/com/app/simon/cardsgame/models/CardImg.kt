@@ -7,6 +7,7 @@ package com.app.simon.cardsgame.models
  * @author xw
  */
 data class CardImg(
+        var name: String? = null,
         var frontImgId: Int = 0,
         var backImgId: Int = 0
 )
