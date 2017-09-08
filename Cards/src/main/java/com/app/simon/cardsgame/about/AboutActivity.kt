@@ -57,6 +57,7 @@ class AboutActivity : BaseActivity(), IViewCallBack {
                 else -> {
                     if (isFirstToast) {
                         toast("点击 $PRESS_TIMES_MAX 次后，开启隐藏页面")
+                        isFirstToast = false
                     }
                     pressTimes++
                     if (pressTimes >= PRESS_TIMES_MAX) {
