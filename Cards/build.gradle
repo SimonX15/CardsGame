@@ -55,5 +55,6 @@ dependencies {
     //aar 依赖
     compile name: 'ViewPagerIndicator-release', ext: 'aar'
 
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
 }
 

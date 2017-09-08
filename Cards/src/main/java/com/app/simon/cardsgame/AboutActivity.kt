@@ -8,6 +8,7 @@ import com.app.simon.base.callback.IViewCallBack
 import com.app.simon.base.util.AppUtil
 import kotlinx.android.synthetic.main.activity_about.*
 import kotlinx.android.synthetic.main.content_about.*
+import org.jetbrains.anko.toast
 
 /**
  * desc: 关于
@@ -16,6 +17,9 @@ import kotlinx.android.synthetic.main.content_about.*
  * @author xw
  */
 class AboutActivity : BaseActivity(), IViewCallBack {
+
+    /** 点击次数 */
+    var pressTimes = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +38,11 @@ class AboutActivity : BaseActivity(), IViewCallBack {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         text_version.text = "v" + AppUtil.getVersionName(this)
+
+        text_develop.setOnClickListener {
+            pressTimes++
+            toast("再点击" + (PRESS_TIMES_MAX - pressTimes) + "次后，开启隐藏页面")
+        }
     }
 
     override fun refreshViews() {
@@ -41,6 +50,9 @@ class AboutActivity : BaseActivity(), IViewCallBack {
 
     companion object {
         private val TAG = AboutActivity::class.java.simpleName
+
+        /** 点击最大次数 */
+        val PRESS_TIMES_MAX = 7
 
         fun launch(activity: Activity) {
             val intent = Intent(activity, AboutActivity::class.java)

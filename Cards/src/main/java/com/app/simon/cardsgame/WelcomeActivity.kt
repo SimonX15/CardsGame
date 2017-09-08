@@ -4,7 +4,7 @@ import android.os.Bundle
 import com.app.simon.base.BaseActivity
 import com.app.simon.base.callback.IViewCallBack
 import com.app.simon.base.util.AppUtil
-import com.app.simon.base.util.SharedPreferencesUtil
+import com.lxt.base.util.SharePreferenceUtil
 import kotlinx.android.synthetic.main.activity_welcome.*
 
 /**
@@ -50,11 +50,11 @@ class WelcomeActivity : BaseActivity(), IViewCallBack {
      */
     private fun isShowGuide(): Boolean {
         //获取版本信息
-        val oldVersionCode: Int = SharedPreferencesUtil.get(this, SharedPreferencesUtil.PREF_OLD_VERSION, 0) as Int
+        val oldVersionCode: Int = SharePreferenceUtil.getInt(this, SharePreferenceUtil.PREF_OLD_VERSION, 0)
         val currentVersionCode: Int = AppUtil.getVersionCode(this)
         //比较
         if (oldVersionCode != currentVersionCode) {
-            SharedPreferencesUtil.put(this, SharedPreferencesUtil.PREF_OLD_VERSION, currentVersionCode)
+            SharePreferenceUtil.put(this, SharePreferenceUtil.PREF_OLD_VERSION, currentVersionCode)
         }
         return currentVersionCode > oldVersionCode
     }
