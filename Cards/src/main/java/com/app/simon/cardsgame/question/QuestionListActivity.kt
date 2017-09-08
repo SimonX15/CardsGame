@@ -11,6 +11,7 @@ import com.app.simon.base.callback.IViewCallBack
 import com.app.simon.cardsgame.R
 import com.app.simon.cardsgame.data.Constant
 import com.app.simon.cardsgame.util.CardUtil
+import kotlinx.android.synthetic.main.activity_question_list.*
 import kotlinx.android.synthetic.main.content_question_list.*
 
 /**
@@ -49,6 +50,9 @@ class QuestionListActivity : BaseActivity(), IViewCallBack {
     }
 
     override fun assignViews() {
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         themeAdapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, themeList)
         spinner_theme.adapter = themeAdapter
         spinner_theme.setSelection(themeIndex)
@@ -99,6 +103,7 @@ class QuestionListActivity : BaseActivity(), IViewCallBack {
     companion object {
         private val TAG = QuestionListActivity::class.java.simpleName
 
+        /** 主题，默认第0个 */
         private val THEME_DEFAULT = 0
 
         fun launch(activity: Activity) {
