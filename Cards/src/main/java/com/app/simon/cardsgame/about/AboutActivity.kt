@@ -1,4 +1,4 @@
-package com.app.simon.cardsgame
+package com.app.simon.cardsgame.about
 
 import android.app.Activity
 import android.content.Intent
@@ -6,6 +6,8 @@ import android.os.Bundle
 import com.app.simon.base.BaseActivity
 import com.app.simon.base.callback.IViewCallBack
 import com.app.simon.base.util.AppUtil
+import com.app.simon.cardsgame.R
+import com.app.simon.cardsgame.questionlist.QuestionListActivity
 import com.lxt.base.util.SharePreferenceUtil
 import kotlinx.android.synthetic.main.activity_about.*
 import kotlinx.android.synthetic.main.content_about.*

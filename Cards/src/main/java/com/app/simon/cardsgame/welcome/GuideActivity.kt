@@ -1,4 +1,4 @@
-package com.app.simon.cardsgame
+package com.app.simon.cardsgame.welcome
 
 import android.app.Activity
 import android.content.Intent
@@ -15,6 +15,8 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import com.app.simon.base.BaseActivity
 import com.app.simon.base.callback.IViewCallBack
+import com.app.simon.cardsgame.main.MainActivity
+import com.app.simon.cardsgame.R
 import kotlinx.android.synthetic.main.activity_guide.*
 
 /**

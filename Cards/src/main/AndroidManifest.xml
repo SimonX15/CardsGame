@@ -12,11 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity
-            android:name=".MainActivity"
+            android:name=".main.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name=".WelcomeActivity">
+        <activity android:name=".welcome.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -24,11 +24,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AboutActivity"
+            android:name=".about.AboutActivity"
             android:label="关于"/>
-        <activity android:name=".GuideActivity">
+        <activity android:name=".welcome.GuideActivity">
         </activity>
-        <activity android:name=".QuestionListActivity">
+        <activity android:name=".questionlist.QuestionListActivity">
         </activity>
     </application>
 

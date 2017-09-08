@@ -1,4 +1,4 @@
-package com.app.simon.cardsgame
+package com.app.simon.cardsgame.main
 
 import android.app.Activity
 import android.content.Intent
@@ -16,9 +16,11 @@ import android.widget.ArrayAdapter
 import com.app.simon.base.BaseActivity
 import com.app.simon.base.callback.IViewCallBack
 import com.app.simon.base.method.postRefreshing
-import com.app.simon.cardsgame.adapter.CardRecyclerViewAdapter
+import com.app.simon.cardsgame.R
+import com.app.simon.cardsgame.about.AboutActivity
+import com.app.simon.cardsgame.main.adapter.CardRecyclerViewAdapter
 import com.app.simon.cardsgame.data.Constant
-import com.app.simon.cardsgame.models.Card
+import com.app.simon.cardsgame.main.models.Card
 import com.app.simon.cardsgame.util.CardUtil
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*

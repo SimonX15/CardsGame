@@ -1,10 +1,11 @@
-package com.app.simon.cardsgame
+package com.app.simon.cardsgame.questionlist
 
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 
 import com.app.simon.base.BaseActivity
+import com.app.simon.cardsgame.R
 
 class QuestionListActivity : BaseActivity() {
 

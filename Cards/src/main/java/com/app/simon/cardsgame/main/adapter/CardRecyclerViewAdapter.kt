@@ -1,4 +1,4 @@
-package com.app.simon.cardsgame.adapter
+package com.app.simon.cardsgame.main.adapter
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
@@ -9,7 +9,7 @@ import android.widget.FrameLayout
 import android.widget.TextView
 import com.app.simon.base.widgets.RoundImageView
 import com.app.simon.cardsgame.R
-import com.app.simon.cardsgame.models.Card
+import com.app.simon.cardsgame.main.models.Card
 import com.app.simon.cardsgame.util.AnimatorUtil
 import java.util.*
 

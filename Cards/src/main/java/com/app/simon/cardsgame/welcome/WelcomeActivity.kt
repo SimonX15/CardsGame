@@ -1,9 +1,11 @@
-package com.app.simon.cardsgame
+package com.app.simon.cardsgame.welcome
 
 import android.os.Bundle
 import com.app.simon.base.BaseActivity
 import com.app.simon.base.callback.IViewCallBack
 import com.app.simon.base.util.AppUtil
+import com.app.simon.cardsgame.main.MainActivity
+import com.app.simon.cardsgame.R
 import com.lxt.base.util.SharePreferenceUtil
 import kotlinx.android.synthetic.main.activity_welcome.*
 

@@ -3,8 +3,8 @@ package com.app.simon.cardsgame.util
 import com.app.simon.base.util.MathUtil
 import com.app.simon.cardsgame.R
 import com.app.simon.cardsgame.data.Constant
-import com.app.simon.cardsgame.models.Card
-import com.app.simon.cardsgame.models.CardImg
+import com.app.simon.cardsgame.main.models.Card
+import com.app.simon.cardsgame.main.models.CardImg
 import java.util.*
 
 /**

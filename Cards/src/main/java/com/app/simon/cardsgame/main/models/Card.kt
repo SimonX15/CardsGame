@@ -1,4 +1,4 @@
-package com.app.simon.cardsgame.models
+package com.app.simon.cardsgame.main.models
 
 /**
  * desc: 卡片
