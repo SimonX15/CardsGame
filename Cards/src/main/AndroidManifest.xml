@@ -28,7 +28,7 @@
             android:label="关于"/>
         <activity android:name=".welcome.GuideActivity">
         </activity>
-        <activity android:name=".questionlist.QuestionListActivity">
+        <activity android:name=".question.QuestionListActivity">
         </activity>
     </application>
 

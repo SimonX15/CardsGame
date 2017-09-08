@@ -18,8 +18,8 @@ import com.app.simon.base.callback.IViewCallBack
 import com.app.simon.base.method.postRefreshing
 import com.app.simon.cardsgame.R
 import com.app.simon.cardsgame.about.AboutActivity
-import com.app.simon.cardsgame.main.adapter.CardRecyclerViewAdapter
 import com.app.simon.cardsgame.data.Constant
+import com.app.simon.cardsgame.main.adapter.CardRecyclerViewAdapter
 import com.app.simon.cardsgame.main.models.Card
 import com.app.simon.cardsgame.util.CardUtil
 import kotlinx.android.synthetic.main.activity_main.*
@@ -36,8 +36,8 @@ import java.util.*
  */
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener, IViewCallBack {
 
-    private val THEME_DEFAULT = 0
-    private val BG_DEFAULT = 0
+    /** 最后一次点击返回的时间，用于判断退出 */
+    private var lastBackPressTime: Long = 0
 
     /** 问题 */
     private var cardList: MutableList<Card>? = null
@@ -240,8 +240,8 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     companion object {
         private val TAG = MainActivity::class.java.simpleName
 
-        /** 最后一次点击返回的时间，用于判断退出 */
-        private var lastBackPressTime: Long = 0
+        private val THEME_DEFAULT = 0
+        private val BG_DEFAULT = 0
 
         fun launch(activity: Activity) {
             val intent = Intent(activity, MainActivity::class.java)

@@ -1,4 +1,4 @@
-package com.app.simon.cardsgame.questionlist
+package com.app.simon.cardsgame.question
 
 import android.content.Context
 import android.widget.TextView

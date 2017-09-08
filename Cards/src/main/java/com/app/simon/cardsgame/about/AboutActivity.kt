@@ -7,7 +7,7 @@ import com.app.simon.base.BaseActivity
 import com.app.simon.base.callback.IViewCallBack
 import com.app.simon.base.util.AppUtil
 import com.app.simon.cardsgame.R
-import com.app.simon.cardsgame.questionlist.QuestionListActivity
+import com.app.simon.cardsgame.question.QuestionListActivity
 import com.lxt.base.util.SharePreferenceUtil
 import kotlinx.android.synthetic.main.activity_about.*
 import kotlinx.android.synthetic.main.content_about.*
@@ -24,7 +24,11 @@ class AboutActivity : BaseActivity(), IViewCallBack {
     /** 点击次数 */
     var pressTimes = 0
 
+    /** 是否跳转列表页 */
     var isShowList = false
+
+    /** 显示一次toast */
+    var isFirstToast = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,10 +55,11 @@ class AboutActivity : BaseActivity(), IViewCallBack {
                     QuestionListActivity.launch(this)
                 }
                 else -> {
-                    if (pressTimes < PRESS_TIMES_MAX) {
-                        pressTimes++
-                        toast("再点击" + (PRESS_TIMES_MAX - pressTimes) + "次后，开启隐藏页面")
-                    } else {
+                    if (isFirstToast) {
+                        toast("点击 $PRESS_TIMES_MAX 次后，开启隐藏页面")
+                    }
+                    pressTimes++
+                    if (pressTimes >= PRESS_TIMES_MAX) {
                         //缓存
                         SharePreferenceUtil.put(this, SharePreferenceUtil.PREF_SHOW_LIST, true)
                         //跳转
