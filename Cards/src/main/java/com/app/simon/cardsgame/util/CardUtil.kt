@@ -149,4 +149,30 @@ object CardUtil {
 
         return cardList
     }
+
+    /**
+     * 突破关系的50个方案
+     */
+    fun getTodo50Records(isShuffle: Boolean, bgImgIndex: Int = -1): MutableList<Card>? {
+        val cardList = ArrayList<Card>()
+        Constant.VALUE_TODO_50.forEachIndexed { index, value ->
+            val card = Card()
+            val cardImgList = getCardImgList()!!
+            if (bgImgIndex == -1) {
+                val randomNum = MathUtil.getRandomNum(cardImgList.size)
+                card.backImgId = cardImgList[randomNum].backImgId
+                card.frontImgId = cardImgList[randomNum].frontImgId
+            } else {
+                card.backImgId = cardImgList[bgImgIndex].backImgId
+                card.frontImgId = cardImgList[bgImgIndex].frontImgId
+            }
+            card.content = value
+            cardList.add(card)
+        }
+        if (isShuffle) {
+            Collections.shuffle(cardList)
+        }
+
+        return cardList
+    }
 }

@@ -224,6 +224,9 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             Constant.THEME_DEEP_50 -> {
                 cardList = CardUtil.getDeep50Records(isShuffle, bgImgIndex - 1)
             }
+            Constant.THEME_TODO_50 -> {
+                cardList = CardUtil.getTodo50Records(isShuffle, bgImgIndex - 1)
+            }
             else -> {
                 cardList = CardUtil.getAmazing36Records(isShuffle, bgImgIndex - 1)
             }
