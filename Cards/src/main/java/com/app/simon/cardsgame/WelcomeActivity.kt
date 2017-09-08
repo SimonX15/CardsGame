@@ -50,7 +50,7 @@ class WelcomeActivity : BaseActivity(), IViewCallBack {
      */
     private fun isShowGuide(): Boolean {
         //获取版本信息
-        val oldVersionCode: Int = SharePreferenceUtil.getInt(this, SharePreferenceUtil.PREF_OLD_VERSION, 0)
+        val oldVersionCode: Int = SharePreferenceUtil.get(this, SharePreferenceUtil.PREF_OLD_VERSION, 0)
         val currentVersionCode: Int = AppUtil.getVersionCode(this)
         //比较
         if (oldVersionCode != currentVersionCode) {

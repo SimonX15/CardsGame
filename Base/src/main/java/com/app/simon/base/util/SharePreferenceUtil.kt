@@ -16,6 +16,9 @@ object SharePreferenceUtil {
     /** 旧版本号  */
     val PREF_OLD_VERSION = "PREF_OLD_VERSION"
 
+    /** 是否开启列表页面  */
+    val PREF_SHOW_LIST = "PREF_SHOW_LIST"
+
     /**
      * Set a String value in the preferences.
      */
@@ -63,7 +66,7 @@ object SharePreferenceUtil {
     /**
      * Retrieve a String value from the preferences.The default value is a empty string.
      */
-    fun getBoolean(context: Context, key: String, defaultValue: Boolean): Boolean {
+    fun get(context: Context, key: String, defaultValue: Boolean): Boolean {
         if (sharedPreferences == null) {
             sharedPreferences = context.getSharedPreferences(DEFAULT_PREF_FILE_NAME, Context.MODE_PRIVATE)
         }
@@ -73,14 +76,14 @@ object SharePreferenceUtil {
     /**
      * Retrieve a String value from the preferences.The default value is a empty string.
      */
-    fun getInt(context: Context, key: String, defaultValue: Int): Int {
+    fun get(context: Context, key: String, defaultValue: Int): Int {
         if (sharedPreferences == null) {
             sharedPreferences = context.getSharedPreferences(DEFAULT_PREF_FILE_NAME, Context.MODE_PRIVATE)
         }
         return sharedPreferences!!.getInt(key, defaultValue)
     }
 
-    fun getLong(context: Context, key: String, defaultValue: Long): Long {
+    fun get(context: Context, key: String, defaultValue: Long): Long {
         if (sharedPreferences == null) {
             sharedPreferences = context.getSharedPreferences(DEFAULT_PREF_FILE_NAME, Context.MODE_PRIVATE)
         }

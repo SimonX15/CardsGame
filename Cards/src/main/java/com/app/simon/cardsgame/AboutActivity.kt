@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.app.simon.base.BaseActivity
 import com.app.simon.base.callback.IViewCallBack
 import com.app.simon.base.util.AppUtil
+import com.lxt.base.util.SharePreferenceUtil
 import kotlinx.android.synthetic.main.activity_about.*
 import kotlinx.android.synthetic.main.content_about.*
 import org.jetbrains.anko.toast
@@ -21,6 +22,8 @@ class AboutActivity : BaseActivity(), IViewCallBack {
     /** 点击次数 */
     var pressTimes = 0
 
+    var isShowList = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_about)
@@ -31,6 +34,7 @@ class AboutActivity : BaseActivity(), IViewCallBack {
     }
 
     override fun initData() {
+        isShowList = SharePreferenceUtil.get(this, SharePreferenceUtil.PREF_SHOW_LIST, false)
     }
 
     override fun assignViews() {
@@ -40,8 +44,22 @@ class AboutActivity : BaseActivity(), IViewCallBack {
         text_version.text = "v" + AppUtil.getVersionName(this)
 
         text_develop.setOnClickListener {
-            pressTimes++
-            toast("再点击" + (PRESS_TIMES_MAX - pressTimes) + "次后，开启隐藏页面")
+            when (isShowList) {
+                true -> {
+                    QuestionListActivity.launch(this)
+                }
+                else -> {
+                    if (pressTimes < PRESS_TIMES_MAX) {
+                        pressTimes++
+                        toast("再点击" + (PRESS_TIMES_MAX - pressTimes) + "次后，开启隐藏页面")
+                    } else {
+                        //缓存
+                        SharePreferenceUtil.put(this, SharePreferenceUtil.PREF_SHOW_LIST, true)
+                        //跳转
+                        QuestionListActivity.launch(this)
+                    }
+                }
+            }
         }
     }
 
