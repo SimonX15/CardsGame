@@ -75,29 +75,20 @@ object CardUtil {
     /**
      * 获取好友档案问题
      */
-    fun getFriendRecords(isShuffle: Boolean, bgImgId: Int = -1): MutableList<Card>? {
+    fun getFriendRecords(isShuffle: Boolean, bgImgIndex: Int = -1): MutableList<Card>? {
         val cardList = ArrayList<Card>()
         Constant.VALUE_FRIEND_RECORD.forEachIndexed { index, value ->
             val card = Card()
             val cardImgList = getCardImgList()!!
 
-            if (bgImgId == -1) {
+            if (bgImgIndex == -1) {
                 val randomNum = MathUtil.getRandomNum(cardImgList.size)
                 card.backImgId = cardImgList[randomNum].backImgId
                 card.frontImgId = cardImgList[randomNum].frontImgId
             } else {
-                card.backImgId = cardImgList[bgImgId].backImgId
-                card.frontImgId = cardImgList[bgImgId].frontImgId
+                card.backImgId = cardImgList[bgImgIndex].backImgId
+                card.frontImgId = cardImgList[bgImgIndex].frontImgId
             }
-
-            /*if (bgImgId in (0..cardImgList!!.size - 1)) {
-                card.backImgId = Constant.CARD_BG[bgImgId]
-                card.frontImgId = Constant.CARD_BG_FRONT[bgImgId]
-            } else {
-                val randomNum = MathUtil.getRandomNum(Constant.CARD_BG.size)
-                card.backImgId = Constant.CARD_BG[randomNum]
-                card.frontImgId = Constant.CARD_BG_FRONT[randomNum]
-            }*/
             card.content = value
             cardList.add(card)
         }
@@ -108,30 +99,47 @@ object CardUtil {
     }
 
     /**
-     * 获取认识彼此36问
+     * 认识彼此的36个问题
      */
-    fun getAmazing36Records(isShuffle: Boolean, bgImgId: Int = -1): MutableList<Card>? {
+    fun getAmazing36Records(isShuffle: Boolean, bgImgIndex: Int = -1): MutableList<Card>? {
         val cardList = ArrayList<Card>()
         Constant.VALUE_AMAZING_36.forEachIndexed { index, value ->
             val card = Card()
             val cardImgList = getCardImgList()!!
-            if (bgImgId == -1) {
+            if (bgImgIndex == -1) {
                 val randomNum = MathUtil.getRandomNum(cardImgList.size)
                 card.backImgId = cardImgList[randomNum].backImgId
                 card.frontImgId = cardImgList[randomNum].frontImgId
             } else {
-                card.backImgId = cardImgList[bgImgId].backImgId
-                card.frontImgId = cardImgList[bgImgId].frontImgId
+                card.backImgId = cardImgList[bgImgIndex].backImgId
+                card.frontImgId = cardImgList[bgImgIndex].frontImgId
             }
+            card.content = value
+            cardList.add(card)
+        }
+        if (isShuffle) {
+            Collections.shuffle(cardList)
+        }
 
-            /*if (bgImgId in (0..Constant.CARD_BG.size - 1)) {
-                card.backImgId = Constant.CARD_BG[bgImgId]
-                card.frontImgId = Constant.CARD_BG_FRONT[bgImgId]
+        return cardList
+    }
+
+    /**
+     * 深入关系的50个问题
+     */
+    fun getDeep50Records(isShuffle: Boolean, bgImgIndex: Int = -1): MutableList<Card>? {
+        val cardList = ArrayList<Card>()
+        Constant.VALUE_DEEP_50.forEachIndexed { index, value ->
+            val card = Card()
+            val cardImgList = getCardImgList()!!
+            if (bgImgIndex == -1) {
+                val randomNum = MathUtil.getRandomNum(cardImgList.size)
+                card.backImgId = cardImgList[randomNum].backImgId
+                card.frontImgId = cardImgList[randomNum].frontImgId
             } else {
-                val randomNum = MathUtil.getRandomNum(Constant.CARD_BG.size)
-                card.backImgId = Constant.CARD_BG[randomNum]
-                card.frontImgId = Constant.CARD_BG_FRONT[randomNum]
-            }*/
+                card.backImgId = cardImgList[bgImgIndex].backImgId
+                card.frontImgId = cardImgList[bgImgIndex].frontImgId
+            }
             card.content = value
             cardList.add(card)
         }

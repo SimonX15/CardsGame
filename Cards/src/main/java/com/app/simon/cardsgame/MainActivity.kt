@@ -53,7 +53,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     /** 主题index */
     private var themeIndex = 0
     /** 背景色index */
-    private var bgIndex = 0
+    private var bgImgIndex = 0
     /** 是否乱序排列 */
     private var isShuffle = true
 
@@ -156,13 +156,13 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         //spinner_bg
         bgAdapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, bgNameList)
         spinner_bg.adapter = bgAdapter
-        spinner_bg.setSelection(bgIndex)
+        spinner_bg.setSelection(bgImgIndex)
         spinner_bg.onItemSelectedListener = object : OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                bgIndex = position
+                bgImgIndex = position
             }
         }
 
@@ -197,7 +197,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     private fun initBg() {
-        bgIndex = BG_DEFAULT
+        bgImgIndex = BG_DEFAULT
         bgList = CardUtil.getBgResIdList()
         bgNameList = CardUtil.getBgResNameList()
     }
@@ -212,18 +212,22 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
      */
     fun refreshData(value: String) {
 
-//        bgIndex - 1：全部是0，则全部都显示，如果不是，则-1，刚好对上，详见Constant
+//        bgImgIndex - 1：全部是0，则全部都显示，如果不是，则-1，刚好对上，详见Constant
 
         when (value) {
-            Constant.THEME_36 -> {
-                cardList = CardUtil.getAmazing36Records(isShuffle, bgIndex - 1)
+            Constant.THEME_KNOW_36 -> {
+                cardList = CardUtil.getAmazing36Records(isShuffle, bgImgIndex - 1)
             }
             Constant.THEME_FRIEND -> {
-                cardList = CardUtil.getFriendRecords(isShuffle, bgIndex - 1)
+                cardList = CardUtil.getFriendRecords(isShuffle, bgImgIndex - 1)
+            }
+            Constant.THEME_DEEP_50 -> {
+                cardList = CardUtil.getDeep50Records(isShuffle, bgImgIndex - 1)
             }
             else -> {
-                cardList = CardUtil.getAmazing36Records(isShuffle, bgIndex - 1)
+                cardList = CardUtil.getAmazing36Records(isShuffle, bgImgIndex - 1)
             }
+
         }
     }
 
